@@ -11,3 +11,162 @@ generator client {
 datasource db {
   provider = "mysql"
 }
+
+model AdminUser {
+  Admin_id      BigInt @map("Admin_id")
+  Name          String @db.VarChar(150)
+  Email         String @db.VarChar(150)
+  Password_hash String @db.VarChar(255)
+  Role          String @db.VarChar(30)
+  Is_active     String @db.Char(1)
+
+  Announcements Announcement[]
+  Audit_logs    AuditLog[]
+  Events        Event[]
+  Member_apps   MemberApp[]
+
+  @@id([Admin_id, Email])
+  @@map("Admin_user")
+}
+
+model Announcement {
+  Announcement_id BigInt @id @map("Announcement_id")
+
+  Tittle     String    @db.VarChar(200)
+  Content    String?   @db.LongText
+  Status     String    @db.VarChar(20)
+  Created_at DateTime  @db.Date
+  Publish_at DateTime? @db.Date
+
+  Organization_Organization_id BigInt
+  Category_Category_id         BigInt
+  Category_Name                String @db.VarChar(100)
+
+  Admin_user_Admin_id BigInt
+  Admin_user_Email    String @db.VarChar(150)
+
+  Organization Organization @relation(fields: [Organization_Organization_id], references: [Organization_id], map: "Announcement_Organization_FK")
+  Category     Category     @relation(fields: [Category_Category_id, Category_Name], references: [Category_id, Name], map: "Announcement_Category_FK")
+  AdminUser    AdminUser    @relation(fields: [Admin_user_Admin_id, Admin_user_Email], references: [Admin_id, Email], map: "Announcement_Admin_user_FK")
+
+  @@map("Announcement")
+}
+
+model AuditLog {
+  Audit_id    BigInt @id @map("Audit_id")
+  Action      String @db.VarChar(100)
+  Entity_type String @db.VarChar(50)
+  Entity_id   BigInt
+  Created_at  DateTime @db.Date
+  Details     String? @db.LongText
+
+  Admin_user_Admin_id BigInt
+  Admin_user_Email    String @db.VarChar(150)
+
+  AdminUser AdminUser @relation(fields: [Admin_user_Admin_id, Admin_user_Email], references: [Admin_id, Email], map: "Audit_log_Admin_user_FK")
+
+  @@map("Audit_log")
+}
+
+model Category {
+  Category_id BigInt @map("Category_id")
+  Name        String @db.VarChar(100)
+  Description String @db.LongText
+
+  Announcements Announcement[]
+
+  @@id([Category_id, Name])
+  @@map("Category")
+}
+
+model Dapartemen {
+  Departemin_id BigInt @id @map("Departemin_id")
+
+  Name          String  @db.VarChar(100)
+  Description   String? @db.LongText
+  Contact_email String  @db.VarChar(150)
+
+  Organization_Organization_id BigInt
+
+  Organization Organization @relation(fields: [Organization_Organization_id], references: [Organization_id], map: "Dapartemen_Organization_FK")
+
+  @@map("Dapartemen")
+}
+
+model Event {
+  Event_id BigInt @id @map("Event_id")
+
+  Tittle      String    @db.VarChar(200)
+  Description String    @db.LongText
+  Location    String    @db.VarChar(200)
+  Start_at    DateTime? @db.Date
+  End_at      DateTime  @db.Date
+  Status      String    @db.VarChar(20)
+
+  Organization_Organization_id BigInt
+
+  Admin_user_Admin_id BigInt
+  Admin_user_Email    String @db.VarChar(150)
+
+  Organization Organization @relation(fields: [Organization_Organization_id], references: [Organization_id], map: "Event_Organization_FK")
+  AdminUser    AdminUser    @relation(fields: [Admin_user_Admin_id, Admin_user_Email], references: [Admin_id, Email], map: "Event_Admin_user_FK")
+
+  @@map("Event")
+}
+
+model Member {
+  Member_Id BigInt @id @map("Member_Id")
+
+  Member_No String @db.VarChar(30)
+  Joined_at DateTime @db.Date
+  Status    String @db.VarChar(20)
+
+  Member_app_App_id BigInt
+  Member_app_Email  String @db.VarChar(150)
+
+  MemberApp MemberApp @relation(fields: [Member_app_App_id, Member_app_Email], references: [App_id, Email], map: "Member_Member_app_FK")
+
+  @@unique([Member_app_App_id, Member_app_Email], map: "Member__IDX")
+  @@map("Member")
+}
+
+model MemberApp {
+  App_id BigInt @map("App_id")
+
+  Full_Name    String @db.VarChar(150)
+  Email        String @db.VarChar(150)
+  Phone_Number String @db.VarChar(30)
+  Submitted_at DateTime @db.Date
+  Status       String @db.VarChar(20)
+
+  Organization_Organization_id BigInt
+
+  Admin_user_Admin_id BigInt
+  Admin_user_Email    String @db.VarChar(150)
+
+  Organization Organization @relation(fields: [Organization_Organization_id], references: [Organization_id], map: "Member_app_Organization_FK")
+  AdminUser    AdminUser    @relation(fields: [Admin_user_Admin_id, Admin_user_Email], references: [Admin_id, Email], map: "Member_app_Admin_user_FK")
+
+  Member Member?
+
+  @@id([App_id, Email])
+  @@map("Member_app")
+}
+
+model Organization {
+  Organization_id BigInt @id @map("Organization_id")
+
+  Name        String @db.VarChar(150)
+  Description String @db.LongText
+  Vision      String? @db.LongText
+  Mission     String? @db.LongText
+  Email       String @db.VarChar(150)
+  Logo_url    String @db.VarChar(255)
+
+  Announcements Announcement[]
+  Dapartemens  Dapartemen[]
+  Events       Event[]
+  Member_apps  MemberApp[]
+
+  @@map("Organization")
+}
