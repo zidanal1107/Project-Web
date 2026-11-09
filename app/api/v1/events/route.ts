@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 import EventService from "@/services/event.service";
 import { serialize } from "@/lib/serialize";
-import { querySchema } from "@/validations/";
+import { querySchema } from "@/validations/event.validation";
 
 export async function GET(request: Request) {
   try {
