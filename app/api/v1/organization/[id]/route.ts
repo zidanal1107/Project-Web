@@ -67,7 +67,7 @@ export async function PUT(
             body = await request.json();
         } catch {
             return NextResponse.json(
-                { success: false, message: "Body harus berupa JSON" },
+                { success: false, message: "Body must be in JSON format" },
                 { status: 400 }
             );
         }
