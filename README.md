@@ -47,7 +47,7 @@ B. Agenda Kegiatan (Event & AuditLog)
 [done] GET /api/v1/events — Mengambil daftar agenda.
 [done] POST /api/v1/events — Menambah agenda (Mencatat log EVENT_CREATED).
 [done] PUT /api/v1/events/:id — Memperbarui agenda (Mencatat log EVENT_UPDATED).
-DELETE /api/v1/events/:id — Menghapus agenda (Mencatat log EVENT_DELETED).
+[done] DELETE /api/v1/events/:id — Menghapus agenda (Mencatat log EVENT_DELETED).
 
 C. Rekrutmen & Anggota (MemberApplication & Member)
 POST /api/v1/member-applications — Pendaftaran publik (Insert ke MemberApplication dengan status PENDING, mencatat log APPLICATION_SUBMITTED).
