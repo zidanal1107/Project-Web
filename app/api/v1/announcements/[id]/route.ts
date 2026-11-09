@@ -1,21 +1,9 @@
 // app/api/v1/announcements/[id]/route.ts
 import { NextResponse } from "next/server";
-import { z } from "zod";
 import AnnouncementService, {AnnouncementNotFoundError, CategoryNotFoundError} from "@/services/announcement.service";
 import { serialize } from "@/lib/serialize";
-import { ANNOUNCEMENT_STATUSES, UpdateAnnouncementData,  } from "@/types/Announcement";
-
-const paramsSchema = z.object({
-  id: z.coerce.number().int().positive(),
-});
-
-const bodySchema = z.object({
-    title: z.string().trim().min(1).max(200),
-    content: z.string().trim().nullish(),
-    status: z.enum(ANNOUNCEMENT_STATUSES),
-    category_id: z.coerce.number().int().positive(),
-    publish_at: z.coerce.date().nullish(),
-});
+import { UpdateAnnouncementData,  } from "@/types/Announcement";
+import { paramsSchema, bodySchema } from "@/validations/announcement.validation";
 
 export async function GET(
   _request: Request,

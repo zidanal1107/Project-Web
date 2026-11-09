@@ -1,21 +1,8 @@
 // app/api/v1/events/route.ts
 import { NextResponse } from "next/server";
-import { z } from "zod";
 import EventService from "@/services/event.service";
 import { serialize } from "@/lib/serialize";
-
-const emptyToUndefined = (v: unknown) =>
-  typeof v === "string" && v.trim() === "" ? undefined : v;
-
-const querySchema = z.object({
-  location: z.preprocess(emptyToUndefined, z.string().trim().max(200).optional()),
-  status: z.preprocess(emptyToUndefined, z.string().max(20).optional()),
-  page: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).default(1)),
-  limit: z.preprocess(
-    emptyToUndefined,
-    z.coerce.number().int().min(1).max(50).default(10)
-  ),
-});
+import { querySchema } from "@/validations/event.validation";
 
 export async function GET(request: Request) {
   try {

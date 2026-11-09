@@ -1,31 +1,8 @@
 // app/api/v1/announcements/route.ts
 import { NextResponse } from "next/server";
-import { z } from "zod";
 import AnnouncementService, { CategoryNotFoundError } from "@/services/announcement.service";
 import { serialize } from "@/lib/serialize";
-import { ANNOUNCEMENT_STATUSES } from "@/types/Announcement";
-
-const emptyToUndefined = (v: unknown) =>
-    typeof v === "string" && v.trim() === "" ? undefined : v;
-
-const querySchema = z.object({
-    category_id: z.preprocess(
-        emptyToUndefined,
-        z.string().regex(/^\d+$/, "category_id numbers only").optional()
-    ),
-    status: z.preprocess(
-        emptyToUndefined,
-        z.enum(["draft", "published", "archived"]).optional()
-    ),
-});
-
-const bodySchema = z.object({
-    title: z.string().trim().min(1).max(200),
-    content: z.string().trim().nullish(),
-    status: z.enum(ANNOUNCEMENT_STATUSES),
-    category_id: z.coerce.number().int().positive(),
-    publish_at: z.coerce.date().nullish(),
-});
+import { querySchema, bodySchema } from "@/validations/announcement.validation";
 
 
 export async function GET(request: Request) {

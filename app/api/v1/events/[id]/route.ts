@@ -1,19 +1,15 @@
 // app/api/v1/events/[id]/route.ts
 import { NextResponse } from "next/server";
-import { z } from "zod";
 import EventService from "@/services/event.service";
 import { serialize } from "@/lib/serialize";
-
-const schema = z.object({
-  id: z.string().regex(/^\d+$/),
-});
+import { idParamsSchema } from "@/validations/common";
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const parsed = schema.safeParse(await params);
+    const parsed = idParamsSchema.safeParse(await params);
     if (!parsed.success) {
       return NextResponse.json(
         { success: false, message: "Invalid request parameters" },
