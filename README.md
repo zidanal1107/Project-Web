@@ -57,7 +57,7 @@ POST /api/v1/member-applications/:id/reject — Menolak pendaftaran (Mencatat lo
 GET /api/v1/members — Mengambil daftar kader resmi yang telah berstatus aktif.
 
 D. Histori Audit (AuditLog)
-GET /api/v1/audit-logs — Mengambil seluruh riwayat log dari tabel AuditLog.
+[done] GET /api/v1/audit-logs — Mengambil seluruh riwayat log dari tabel AuditLog.
 
 E. Profil Organisasi & Bidang (Organization & Department)
 GET /api/v1/organization & PUT /api/v1/organization
