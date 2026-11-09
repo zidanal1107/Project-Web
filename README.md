@@ -60,6 +60,6 @@ D. Histori Audit (AuditLog)
 [done] GET /api/v1/audit-logs — Mengambil seluruh riwayat log dari tabel AuditLog.
 
 E. Profil Organisasi & Bidang (Organization & Department)
-GET /api/v1/organization & PUT /api/v1/organization
+[done] GET /api/v1/organization & PUT /api/v1/organization
 GET /api/v1/departments
 GET /api/v1/categories
