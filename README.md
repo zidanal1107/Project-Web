@@ -61,5 +61,5 @@ D. Histori Audit (AuditLog)
 
 E. Profil Organisasi & Bidang (Organization & Department)
 [done] GET /api/v1/organization & PUT /api/v1/organization
-GET /api/v1/departments
+[done] GET /api/v1/departments
 GET /api/v1/categories
