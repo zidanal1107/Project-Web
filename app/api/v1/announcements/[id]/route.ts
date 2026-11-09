@@ -1,10 +1,10 @@
 // app/api/v1/announcements/[id]/route.ts
 import { NextResponse } from "next/server";
-import { z } from "zod";
 import AnnouncementService, {AnnouncementNotFoundError, CategoryNotFoundError} from "@/services/announcement.service";
 import { serialize } from "@/lib/serialize";
 import { UpdateAnnouncementData,  } from "@/types/Announcement";
 import { paramsSchema, bodySchema } from "@/validations/announcement.validation";
+import { getCurrentAdmin } from "@/lib/getCurrentAdmin";
 
 export async function GET(
   _request: Request,
@@ -40,14 +40,6 @@ export async function GET(
       { status: 500 }
     );
   }
-}
-// sementara ini untuk testing, nanti diganti dengan autentikasi
-async function getCurrentAdmin() {
-    return {
-        adminId: BigInt(1),
-        email: "admin@example.com",
-        organizationId: BigInt(1),
-    };
 }
 
 export async function PUT(

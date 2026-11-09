@@ -51,12 +51,6 @@ export type CreateAnnouncementData = {
   publishAt?: Date | null;
 };
 
-export type Actor = {
-  adminId: bigint;
-  email: string;
-  organizationId: bigint;
-};
-
 export type UpdateAnnouncementData = {
   title: string;
   content?: string | null;

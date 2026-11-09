@@ -1,6 +1,7 @@
 import "server-only";
 import { prisma } from "@/lib/prisma";
-import type { GetAllFilter, CreateAnnouncementData, Actor, UpdateAnnouncementData } from "@/types/Announcement";
+import type { GetAllFilter, CreateAnnouncementData, UpdateAnnouncementData } from "@/types/Announcement";
+import type { Actor } from "@/types/common";
 
 export class CategoryNotFoundError extends Error { }
 export class AnnouncementNotFoundError extends Error { }

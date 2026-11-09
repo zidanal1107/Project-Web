@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import AnnouncementService, { CategoryNotFoundError } from "@/services/announcement.service";
 import { serialize } from "@/lib/serialize";
 import { querySchema, bodySchema } from "@/validations/announcement.validation";
-
+import { getCurrentAdmin } from "@/lib/getCurrentAdmin";
 
 export async function GET(request: Request) {
     try {
@@ -39,14 +39,6 @@ export async function GET(request: Request) {
             { status: 500 }
         );
     }
-}
-// sementara ini untuk testing, nanti diganti dengan autentikasi
-async function getCurrentAdmin() {
-    return {
-        adminId: BigInt(1),
-        email: "admin@example.com",
-        organizationId: BigInt(1),
-    };
 }
 
 export async function POST(request: Request) {
