@@ -1,5 +1,6 @@
 // app/api/v1/announcements/[id]/route.ts
 import { NextResponse } from "next/server";
+import { z } from "zod";
 import AnnouncementService, {AnnouncementNotFoundError, CategoryNotFoundError} from "@/services/announcement.service";
 import { serialize } from "@/lib/serialize";
 import { UpdateAnnouncementData,  } from "@/types/Announcement";
