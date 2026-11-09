@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 import AnnouncementService, { CategoryNotFoundError } from "@/services/announcement.service";
 import { serialize } from "@/lib/serialize";
-import { querySchema, bo } from "@/validations/announcement.validation";
+import { querySchema, bodySchema } from "@/validations/announcement.validation";
 
 
 export async function GET(request: Request) {
