@@ -21,6 +21,6 @@ export const querySchema = z.object({
     ),
 });
 
-exportconst paramsSchema = z.object({
+export const paramsSchema = z.object({
   id: z.coerce.number().int().positive(),
 });
