@@ -50,11 +50,11 @@ B. Agenda Kegiatan (Event & AuditLog)
 [done] DELETE /api/v1/events/:id — Menghapus agenda (Mencatat log EVENT_DELETED).
 
 C. Rekrutmen & Anggota (MemberApplication & Member)
-POST /api/v1/member-applications — Pendaftaran publik (Insert ke MemberApplication dengan status PENDING, mencatat log APPLICATION_SUBMITTED).
-GET /api/v1/member-applications — Mengambil berkas pendaftaran untuk ditinjau admin.
-POST /api/v1/member-applications/:id/approve — Menyetujui pendaftaran (Backend mengubah status jadi APPROVED, meng-insert baris baru di tabel Member dengan member_number, serta mencatat log APPLICATION_APPROVED).
-POST /api/v1/member-applications/:id/reject — Menolak pendaftaran (Mencatat log APPLICATION_REJECTED).
-GET /api/v1/members — Mengambil daftar kader resmi yang telah berstatus aktif.
+[done] POST /api/v1/member-applications — Pendaftaran publik (Insert ke MemberApplication dengan status PENDING, mencatat log APPLICATION_SUBMITTED).
+[done] GET /api/v1/member-applications — Mengambil berkas pendaftaran untuk ditinjau admin.
+[done] POST /api/v1/member-applications/:id/approve — Menyetujui pendaftaran (Backend mengubah status jadi APPROVED, meng-insert baris baru di tabel Member dengan member_number, serta mencatat log APPLICATION_APPROVED).
+[done] POST /api/v1/member-applications/:id/reject — Menolak pendaftaran (Mencatat log APPLICATION_REJECTED).
+[done] GET /api/v1/members — Mengambil daftar kader resmi yang telah berstatus aktif.
 
 D. Histori Audit (AuditLog)
 [done] GET /api/v1/audit-logs — Mengambil seluruh riwayat log dari tabel AuditLog.
