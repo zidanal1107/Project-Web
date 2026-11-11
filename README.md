@@ -1,65 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pusat Informasi Organisasi — IMM Cabang Malang
 
-## Getting Started
+Aplikasi web modern, responsif, dan siap pakai untuk pusat informasi organisasi, rekrutmen kader, publikasi warta/instruksi, serta tata kelola akuntabilitas pimpinan dengan pencatatan audit log otomatis.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠️ Tech Stack
+
+- **Framework:** React 19 + TypeScript
+- **Bundler:** Vite 8 (Hot Module Replacement)
+- **Styling:** Tailwind CSS v4 (Native Vite Plugin)
+- **Routing:** React Router v7 (`react-router-dom`)
+- **Server State Management:** TanStack Query v5 (`@tanstack/react-query`)
+- **HTTP Client:** Axios (Interceptors & Error Normalizer)
+- **Icons:** Lucide React
+
+---
+
+## 🗄️ Database Schema & Entities
+
+Arsitektur aplikasi dipadukan secara presisi 1:1 dengan 9 entitas database:
+
+```
+A. Core Organization
+   ├── 1. Organization        : Profil utama organisasi, visi, misi, logo, email
+   ├── 2. Department          : Bidang/divisi fungsional pimpinan cabang
+   └── 3. AdminUser           : Akun pengurus/admin sistem
+
+B. Information & Activities
+   ├── 4. Announcement        : Warta, instruksi, surat edaran, siaran pers (CRUD)
+   ├── 5. Category            : Kategori pengumuman
+   └── 6. Event               : Agenda kegiatan & perkaderan (CRUD)
+
+C. Recruitment & Membership
+   ├── 7. MemberApplication   : Formulir pendaftaran calon kader (PENDING / APPROVED / REJECTED)
+   └── 8. Member              : Anggota resmi aktif dengan Nomor Induk Anggota (NIA)
+
+D. System Accountability
+   └── 9. AuditLog            : Jejak rekam mutasi data (create, update, delete, approve)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Struktur Folder Proyek
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+d:\KMD\src\
+├── assets/                  # File statis dan ikon
+├── components/              # Komponen antarmuka modular
+│   ├── common/              # Header, Footer, RoleSwitcher
+│   └── feedback/            # SkeletonLoader, EmptyState, ErrorBanner
+├── context/                 # AuthContext (Role: guest, kader, admin)
+├── hooks/                   # Custom query hooks (useAnnouncements, useEvents, useMembership, useAudit, useOrg)
+├── layouts/                 # PublicLayout, AdminLayout, RootLayout
+├── pages/                   # Halaman publik & panel manajemen admin
+│   ├── HomePage.tsx         # Beranda portal organisasi
+│   ├── AnnouncementsPage.tsx # Arsip warta & filter kategori
+│   ├── AnnouncementDetailPage.tsx # Baca pengumuman lengkap
+│   ├── EventsPage.tsx       # Kalender agenda kegiatan
+│   ├── ProfilePage.tsx      # Profil entitas organisasi & departemen
+│   ├── MemberRegisterPage.tsx # Formulir pendaftaran kader baru (MemberApplication)
+│   ├── LoginPage.tsx        # Autentikasi pengurus
+│   └── admin/               # Panel admin backoffice
+│       ├── AdminDashboard.tsx      # Metrik ringkasan & live audit log
+│       ├── ManageAnnouncements.tsx # CRUD penuh Announcement
+│       ├── ManageEvents.tsx        # CRUD penuh Event
+│       ├── ManageMembership.tsx    # Verifikasi pendaftaran & penerbitan NIA Member
+│       ├── ManageOrganization.tsx  # Pengaturan Organization & Department
+│       └── AuditLogsPage.tsx       # Viewer histori AuditLog & Ekspor CSV
+├── routes/                  # Route definitions & ProtectedRoute guard
+├── services/                # API client, database service, & service adapters
+│   ├── api.client.ts        # Axios client instance
+│   ├── db.service.ts        # In-browser persistent database (localStorage)
+│   └── modules/             # Dual-mode service adapters (Mock / Real API)
+├── types/                   # TypeScript interfaces (schema.types.ts, api.types.ts)
+└── main.tsx
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Menjalankan Aplikasi
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1. Instalasi Dependensi
+```bash
+npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. Menjalankan Server Pengembangan (Dev)
+```bash
+npm run dev
+```
+Akses di peramban: `http://localhost:5173`
 
-## Deploy on Vercel
+### 3. Build Produksi
+```bash
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔌 Integrasi Database (Dual-Mode Architecture)
 
+Aplikasi memiliki **Dual-Mode Adapter** yang memungkinkan Anda beralih dari database simulasi internal ke database riil server backend tanpa perlu mengubah kode komponen tampilan.
 
-A. Warta & Pengumuman (Announcement & AuditLog)
-[done] GET /api/v1/announcements — Mengambil daftar pengumuman (mendukung filter ?category_id=&status=).
-[done] GET /api/v1/announcements/:id — Detail satu pengumuman.
-[done] POST /api/v1/announcements — Menambah pengumuman baru (Backend otomatis meng-insert ke tabel Announcement dan tabel AuditLog dengan aksi ANNOUNCEMENT_PUBLISHED).
-[done] PUT /api/v1/announcements/:id — Mengubah pengumuman (Backend mencatat log ANNOUNCEMENT_UPDATED).
-[done] DELETE /api/v1/announcements/:id — Menghapus pengumuman (Backend mencatat log ANNOUNCEMENT_DELETED).
+### Beralih ke Database Riil:
+1. Buat file `.env` di direktori utama:
+   ```env
+   VITE_API_BASE_URL=http://localhost:8000/api/v1
+   VITE_USE_MOCK=false
+   ```
+2. Ketika `VITE_USE_MOCK=false`, Axios langsung mengirim HTTP request ke REST API backend server Anda.
 
-B. Agenda Kegiatan (Event & AuditLog)
-[done] GET /api/v1/events — Mengambil daftar agenda.
-[done] POST /api/v1/events — Menambah agenda (Mencatat log EVENT_CREATED).
-[done] PUT /api/v1/events/:id — Memperbarui agenda (Mencatat log EVENT_UPDATED).
-[done] DELETE /api/v1/events/:id — Menghapus agenda (Mencatat log EVENT_DELETED).
+### Kontrak Endpoint REST API untuk Backend Developer:
 
-C. Rekrutmen & Anggota (MemberApplication & Member)
-[done] POST /api/v1/member-applications — Pendaftaran publik (Insert ke MemberApplication dengan status PENDING, mencatat log APPLICATION_SUBMITTED).
-[done] GET /api/v1/member-applications — Mengambil berkas pendaftaran untuk ditinjau admin.
-[done] POST /api/v1/member-applications/:id/approve — Menyetujui pendaftaran (Backend mengubah status jadi APPROVED, meng-insert baris baru di tabel Member dengan member_number, serta mencatat log APPLICATION_APPROVED).
-[done] POST /api/v1/member-applications/:id/reject — Menolak pendaftaran (Mencatat log APPLICATION_REJECTED).
-[done] GET /api/v1/members — Mengambil daftar kader resmi yang telah berstatus aktif.
+| Metode | Endpoint | Deskripsi |
+|---|---|---|
+| `GET` | `/announcements` | Mengambil daftar pengumuman (`?category_id=&status=&search=`) |
+| `GET` | `/announcements/:id` | Detail pengumuman |
+| `POST` | `/announcements` | Buat pengumuman baru *(Backend wajib mencatat ke `AuditLog`)* |
+| `PUT` | `/announcements/:id` | Edit pengumuman *(Backend wajib mencatat ke `AuditLog`)* |
+| `DELETE` | `/announcements/:id` | Hapus pengumuman *(Backend wajib mencatat ke `AuditLog`)* |
+| `GET` | `/events` | Mengambil kalender agenda |
+| `POST` | `/events` | Buat agenda baru *(Mencatat ke `AuditLog`)* |
+| `PUT` | `/events/:id` | Edit agenda *(Mencatat ke `AuditLog`)* |
+| `DELETE` | `/events/:id` | Hapus agenda *(Mencatat ke `AuditLog`)* |
+| `POST` | `/member-applications` | Pendaftaran publik (status awal `PENDING`) |
+| `GET` | `/member-applications` | Daftar formulir pendaftaran untuk diverifikasi admin |
+| `POST` | `/member-applications/:id/approve` | Menyetujui pendaftaran & menerbitkan `Member` (NIA) |
+| `POST` | `/member-applications/:id/reject` | Menolak pendaftaran kader |
+| `GET` | `/members` | Daftar anggota resmi aktif |
+| `GET` | `/audit-logs` | Mengambil seluruh riwayat tabel `AuditLog` |
+| `GET` / `PUT` | `/organization` | Profil organisasi utama |
+| `GET` | `/departments` | Daftar bidang/divisi |
+| `GET` | `/categories` | Daftar kategori pengumuman |
 
-D. Histori Audit (AuditLog)
-[done] GET /api/v1/audit-logs — Mengambil seluruh riwayat log dari tabel AuditLog.
+---
 
-E. Profil Organisasi & Bidang (Organization & Department)
-[done] GET /api/v1/organization & PUT /api/v1/organization
-[done] GET /api/v1/departments
-[done] GET /api/v1/categories
+## 👥 Pengujian Role (Widget Role Switcher)
+
+Tersedia tombol widget melayang di pojok kanan bawah yang memungkinkan penguji beralih peran instan:
+- **Guest:** Pengunjung umum & calon kader (mengakses Beranda, Warta, Agenda, Profil, dan Pendaftaran Anggota).
+- **Kader:** Anggota aktif terdaftar.
+- **Admin:** Pimpinan/pengurus dengan akses penuh ke seluruh tabel backoffice dan histori `AuditLog`.
