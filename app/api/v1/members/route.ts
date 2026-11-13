@@ -1,10 +1,9 @@
 // app/api/v1/members/route.ts
 import { NextResponse } from "next/server";
-import MemberService from "@/services/member.service";
-import { memberQuerySchema } from "@/validations/member.validation";
-import { getCurrentAdmin } from "@/lib/getCurrentAdmin";
-import { serialize } from "@/lib/serialize";
-import { error } from "console";
+import MemberService from "@../../../services/server/member.service";
+import { memberQuerySchema } from "@../../../validations/member.validation";
+import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
+import { serialize } from "@../../../lib/serialize";
 
 export async function GET(request: Request) {
     try {

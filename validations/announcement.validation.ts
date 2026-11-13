@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ANNOUNCEMENT_STATUSES } from "@/types/Announcement";
+import { ANNOUNCEMENT_STATUSES } from "../types/Announcement";
 import { emptyToUndefined } from "./common";
 
 export const bodySchema = z.object({

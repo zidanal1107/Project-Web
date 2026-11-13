@@ -1,9 +1,9 @@
 // app/api/v1/announcements/route.ts
 import { NextResponse } from "next/server";
-import AnnouncementService, { CategoryNotFoundError } from "@/services/announcement.service";
-import { serialize } from "@/lib/serialize";
-import { querySchema, bodySchema } from "@/validations/announcement.validation";
-import { getCurrentAdmin } from "@/lib/getCurrentAdmin";
+import AnnouncementService, { CategoryNotFoundError } from "@../../../services/server/announcement.service";
+import { serialize } from "@../../../lib/serialize";
+import { querySchema, bodySchema } from "@../../../validations/announcement.validation";
+import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
 
 export async function GET(request: Request) {
     try {

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { APPLICATION_STATUSES } from "@/types/member-application";
+import { APPLICATION_STATUSES } from "../types/member-application";
 import { emptyToUndefined, paginationSchema } from "./common";
 
 export const memberApplicationBodySchema = z.object({

@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import MemberApplicationService, {
     DuplicateApplicationError,
-} from "@/services/member-application.service";
-import { memberApplicationBodySchema, memberApplicationQuerySchema } from "@/validations/member-application.validation";
-import { getSystemActor } from "@/lib/system-actor";
-import { serialize } from "@/lib/serialize";
-import { getCurrentAdmin } from "@/lib/getCurrentAdmin";
+} from "@../../../services/server/member-application.service";
+import { memberApplicationBodySchema, memberApplicationQuerySchema } from "@../../../validations/member-application.validation";
+import { getSystemActor } from "@../../../lib/system-actor";
+import { serialize } from "@../../../lib/serialize";
+import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
 
 export async function POST(request: Request) {
     try {

@@ -1,8 +1,8 @@
 // app/api/v1/categories/route.ts
 import { NextResponse } from "next/server";
-import CategoryService from "@/services/category.service";
-import { categoryQuerySchema } from "@/validations/category.validation";
-import { serialize } from "@/lib/serialize";
+import CategoryService from "@../../../services/server/category.service";
+import { categoryQuerySchema } from "@../../../validations/category.validation";
+import { serialize } from "@../../../lib/serialize";
 
 export async function GET(request: Request) {
     try {

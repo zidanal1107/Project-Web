@@ -1,0 +1,10 @@
+var R=require("../../../chunks/[turbopack]_runtime.js")("server/app/api/health/route.js")
+R.c("server/chunks/[externals]__0zn7yrm5pivzs._.js")
+R.c("server/chunks/node_modules_next_0c2yj52gd3p7a._.js")
+R.c("server/chunks/0-2g_mariadb_1h-2rip3l193i._.js")
+R.c("server/chunks/0-2g_iconv-lite_1kp06_2oxu1p_._.js")
+R.c("server/chunks/[root-of-the-server]__1v6pp8nkl3ol2._.js")
+R.c("server/chunks/[root-of-the-server]__170tyi2dqu4gc._.js")
+R.c("server/chunks/_next-internal_server_app_api_health_route_actions_1ryftkbeskq31.js")
+R.m("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/health/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)")
+module.exports=R.m("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/health/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)").exports

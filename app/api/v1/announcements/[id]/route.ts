@@ -1,10 +1,10 @@
 // app/api/v1/announcements/[id]/route.ts
 import { NextResponse } from "next/server";
-import AnnouncementService, {AnnouncementNotFoundError, CategoryNotFoundError} from "@/services/announcement.service";
-import { serialize } from "@/lib/serialize";
-import { UpdateAnnouncementData,  } from "@/types/Announcement";
-import { paramsSchema, bodySchema } from "@/validations/announcement.validation";
-import { getCurrentAdmin } from "@/lib/getCurrentAdmin";
+import AnnouncementService, {AnnouncementNotFoundError, CategoryNotFoundError} from "@../../../services/server/announcement.service";
+import { serialize } from "@/../../lib/serialize";
+import { UpdateAnnouncementData,  } from "@../../../types/Announcement";
+import { paramsSchema, bodySchema } from "@../../../validations/announcement.validation";
+import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
 
 export async function GET(
   _request: Request,

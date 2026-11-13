@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import AuditLogService from "@/services/audit-log.service";
-import { auditLogQuerySchema } from "@/validations/audit-log.validation";
-import { serialize } from "@/lib/serialize";
+import AuditLogService from "@../../../services/server/audit-log.service";
+import { auditLogQuerySchema } from "@../../../validations/audit-log.validation";
+import { serialize } from "@../../../lib/serialize";
 
 export async function GET(request: Request) {
     try {

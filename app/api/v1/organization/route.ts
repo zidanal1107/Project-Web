@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import OrganizationService from "@/services/organization.service";
-import { organizationQuerySchema } from "@/validations/organization.validation";
-import { serialize } from "@/lib/serialize";
+import OrganizationService from "@../../../services/server/organization.service";
+import { organizationQuerySchema } from "@../../../validations/organization.validation";
+import { serialize } from "@../../../lib/serialize";
 
 export async function GET(request: Request) {
     try {

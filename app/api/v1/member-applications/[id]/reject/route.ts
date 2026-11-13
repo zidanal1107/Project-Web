@@ -2,11 +2,11 @@ import { NextResponse } from "next/server";
 import MemberApplicationService, {
     ApplicationNotFoundError,
     ApplicationNotPendingError,
-} from "@/services/member-application.service";
-import { idParamsSchema } from "@/validations/common";
-import { rejectBodySchema } from "@/validations/member-application.validation";
-import { getCurrentAdmin } from "@/lib/getCurrentAdmin";
-import { serialize } from "@/lib/serialize";
+} from "@../../../services/server/member-application.service";
+import { idParamsSchema } from "@../../../validations/common";
+import { rejectBodySchema } from "@../../../validations/member-application.validation";
+import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
+import { serialize } from "@../../../lib/serialize";
 
 export async function POST(
     request: Request,

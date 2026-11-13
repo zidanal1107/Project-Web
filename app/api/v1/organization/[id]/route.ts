@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import OrganizationService, {
     OrganizationNotFoundError,
-} from "@/services/organization.service";
-import { idParamsSchema } from "@/validations/common";
-import { organizationBodySchema } from "@/validations/organization.validation";
-import type { UpdateOrganizationData } from "@/types/organization";
-import { getCurrentAdmin } from "@/lib/getCurrentAdmin";
-import { serialize } from "@/lib/serialize";
+} from "@../../../services/server/organization.service";
+import { idParamsSchema } from "@../../../validations/common";
+import { organizationBodySchema } from "@../../../validations/organization.validation";
+import type { UpdateOrganizationData } from "@../../../types/organization";
+import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
+import { serialize } from "@../../../lib/serialize";
 
 export async function GET(
     _request: Request,

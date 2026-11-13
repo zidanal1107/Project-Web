@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import DepartmentService from "@/services/department.service";
-import { departmentQuerySchema } from "@/validations/department.validation";
-import { serialize } from "@/lib/serialize";
+import DepartmentService from "@../../../services/server/department.service";
+import { departmentQuerySchema } from "@../../../validations/department.validation";
+import { serialize } from "@../../../lib/serialize";
 
 export async function GET(request: Request) {
     try {

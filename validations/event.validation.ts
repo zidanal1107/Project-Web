@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { emptyToUndefined } from "./common";
-import { EVENT_STATUSES } from "@/types/Event";
+import { EVENT_STATUSES } from "../types/Event";
 
 export const querySchema = z.object({
     location: z.preprocess(emptyToUndefined, z.string().trim().max(200).optional()),

@@ -1,11 +1,11 @@
 // app/api/v1/events/[id]/route.ts
 import { NextResponse } from "next/server";
-import EventService, { EventNotFoundError } from "@/services/event.service";
-import { serialize } from "@/lib/serialize";
-import { idParamsSchema } from "@/validations/common";
-import { UpdateEventData } from "@/types/Event";
-import { eventBodySchema } from "@/validations/event.validation";
-import { getCurrentAdmin } from "@/lib/getCurrentAdmin";
+import EventService, { EventNotFoundError } from "@../../../services/server/event.service";
+import { serialize } from "@../../../lib/serialize";
+import { idParamsSchema } from "@../../../validations/common";
+import { UpdateEventData } from "@../../../types/Event";
+import { eventBodySchema } from "@../../../validations/event.validation";
+import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
 
 export async function GET(
     _request: Request,

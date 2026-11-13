@@ -1,10 +1,10 @@
 // app/api/v1/events/route.ts
 import { NextResponse } from "next/server";
-import EventService from "@/services/event.service";
-import { serialize } from "@/lib/serialize";
-import { querySchema, eventBodySchema } from "@/validations/event.validation";
-import type { CreateEventData } from "@/types/Event";
-import { getCurrentAdmin } from "@/lib/getCurrentAdmin";
+import EventService from "@../../../services/server/event.service";
+import { serialize } from "@../../../lib/serialize";
+import { querySchema, eventBodySchema } from "@../../../validations/event.validation";
+import type { CreateEventData } from "@../../../types/Event";
+import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
 
 export async function GET(request: Request) {
     try {

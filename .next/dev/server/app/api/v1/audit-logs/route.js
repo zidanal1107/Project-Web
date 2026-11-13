@@ -1,0 +1,13 @@
+var R=require("../../../../chunks/[turbopack]_runtime.js")("server/app/api/v1/audit-logs/route.js")
+R.c("server/chunks/[externals]__0k6-v8acdekq3._.js")
+R.c("server/chunks/node_modules_next_0_hw14kdtnhec._.js")
+R.c("server/chunks/0-2g_mariadb_1h-2rip3l193i._.js")
+R.c("server/chunks/0-2g_iconv-lite_1kp06_2oxu1p_._.js")
+R.c("server/chunks/node_modules_zod_v4_classic_0ahc56fzzbbzi._.js")
+R.c("server/chunks/node_modules_zod_v4_core_0yfsh0dphquad._.js")
+R.c("server/chunks/node_modules_zod_v4_locales_0on3-qho2_wkm._.js")
+R.c("server/chunks/[root-of-the-server]__1v6pp8nkl3ol2._.js")
+R.c("server/chunks/[root-of-the-server]__1kkze2k_oh0i9._.js")
+R.c("server/chunks/_next-internal_server_app_api_v1_audit-logs_route_actions_1_flfcqua9jci.js")
+R.m("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/v1/audit-logs/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)")
+module.exports=R.m("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/v1/audit-logs/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)").exports
