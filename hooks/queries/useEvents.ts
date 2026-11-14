@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { eventService } from '@/services/modules/eventService';
-import type { Event } from '@/types/schema.types';
+import { eventService } from '@/services/client/modules/event.service';
+import type { Event } from '@/types/client/schema.types';
 import { AUDIT_QUERY_KEY } from './useAudit';
 
 export const EVENTS_QUERY_KEY = 'events';

@@ -1,0 +1,53 @@
+import type { OrgEvent } from '@/types/client/event.types';
+
+export const MOCK_EVENTS: OrgEvent[] = [
+  {
+    id: 'evt-1',
+    title: 'Konsolidasi Akbar & Evaluasi Gerak Kader Semester Ganjil',
+    description: 'Forum koordinasi seluruh jajaran pimpinan cabang dan pimpinan komisariat se-Malang Raya.',
+    type: 'rapat',
+    status: 'upcoming',
+    startDate: '2026-11-14T08:30:00Z',
+    endDate: '2026-11-14T16:00:00Z',
+    location: 'Aula PDM Kota Malang, Jl. Gajayana No. 28',
+    isOnline: false,
+    organizer: 'BPH Pimpinan Cabang IMM Malang',
+  },
+  {
+    id: 'evt-2',
+    title: 'Darul Arqam Madya (DAM) Nasional IMM Malang 2026',
+    description: 'Perkaderan kepemimpinan tingkat madya nasional dengan fokus intelektualisme profetik.',
+    type: 'perkaderan',
+    status: 'upcoming',
+    startDate: '2026-12-05T08:00:00Z',
+    endDate: '2026-12-11T12:00:00Z',
+    location: 'Balai Diklat Keagamaan / Kampus Utama',
+    isOnline: false,
+    organizer: 'Bidang Kader PC IMM Malang',
+    registrationUrl: 'https://bit.ly/DAM-Nasional-Malang2026',
+  },
+  {
+    id: 'evt-3',
+    title: 'Kajian Kebangsaan & Dialektika Intelektual Profetik',
+    description: 'Diskusi publik menilik arah demokrasi dan kedaulatan sains-teknologi kader muda.',
+    type: 'kajian',
+    status: 'upcoming',
+    startDate: '2026-11-20T19:30:00Z',
+    location: 'Ruang Seminar Heritage & Live Zoom',
+    isOnline: true,
+    meetingLink: 'https://zoom.us/j/9988776655',
+    organizer: 'Bidang Riset dan Pengembangan Keilmuan (RPK)',
+  },
+  {
+    id: 'evt-4',
+    title: 'Sidang Pleno Triwulan I PC IMM Malang',
+    description: 'Laporan progres kerja setiap bidang pimpinan cabang dan evaluasi serapan anggaran.',
+    type: 'rapat',
+    status: 'completed',
+    startDate: '2026-10-10T09:00:00Z',
+    location: 'Gedung Dakwah Muhammadiyah',
+    isOnline: false,
+    organizer: 'Sekretariat PC IMM Malang',
+  },
+];
+

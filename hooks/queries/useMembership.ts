@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { membershipService } from '@/services/modules/membershipService';
+import { membershipService } from '@/services/client/modules/membership.service';
 import { AUDIT_QUERY_KEY } from './useAudit';
 
 export const APPLICATIONS_QUERY_KEY = 'member_applications';

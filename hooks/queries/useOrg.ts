@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { orgService } from '@/services/modules/orgService';
-import type { Organization } from '@/types/schema.types';
+import { orgService } from '@/services/client/modules/org.service';
+import type { Organization } from '@/types/client/schema.types';
 import { AUDIT_QUERY_KEY } from './useAudit';
 
 export const ORG_QUERY_KEY = 'organization';

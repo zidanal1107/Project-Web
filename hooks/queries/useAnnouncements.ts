@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { announcementService } from '@/services/modules/announcementService';
-import type { Announcement, AnnouncementStatus } from '@/types/schema.types';
+import { announcementService } from '@/services/client/modules/announcement.service';
+import type { Announcement, AnnouncementStatus } from '@/types/client/schema.types';
 import { AUDIT_QUERY_KEY } from './useAudit';
 
 export const ANNOUNCEMENTS_QUERY_KEY = 'announcements';
