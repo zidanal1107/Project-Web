@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { BookOpen, Search, Download, Clock, FileText } from "lucide-react";
-import { useResources } from "../../hooks/queries/useResources";
-import { SkeletonLoader } from "../../components/feedback/SkeletonLoader";
-import { EmptyState } from "../../components/feedback/EmptyState";
+import { useResources } from "../../../hooks/queries/useResources";
+import { SkeletonLoader } from "../../../components/feedback/SkeletonLoader";
+import { EmptyState } from "../../../components/feedback/EmptyState";
 
 export default function ResourcesPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");

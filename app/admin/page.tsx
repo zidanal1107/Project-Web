@@ -11,14 +11,14 @@ import {
   ArrowUpRight,
   RotateCcw,
 } from "lucide-react";
-import { useAnnouncements } from "../../../hooks/queries/useAnnouncements";
-import { useEvents } from "../../../hooks/queries/useEvents";
+import { useAnnouncements } from "../../hooks/queries/useAnnouncements";
+import { useEvents } from "../../hooks/queries/useEvents";
 import {
   useMemberApplications,
   useMembers,
-} from "../../../hooks/queries/useMembership";
-import { useAuditLogs } from "../../../hooks/queries/useAudit";
-import { db } from "../../../services/client/db.service";
+} from "../../hooks/queries/useMembership";
+import { useAuditLogs } from "../../hooks/queries/useAudit";
+import { db } from "../../services/client/db.service";
 import { useQueryClient } from "@tanstack/react-query";
 
 export default function AdminDashboard() {

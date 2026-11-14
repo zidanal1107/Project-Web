@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Search, Bell, Calendar, ArrowRight } from "lucide-react";
-import { useAnnouncements } from "../../hooks/queries/useAnnouncements";
-import { useCategories } from "../../hooks/queries/useOrg";
-import { SkeletonLoader } from "../../components/feedback/SkeletonLoader";
-import { EmptyState } from "../../components/feedback/EmptyState";
+import { useAnnouncements } from "../../../hooks/queries/useAnnouncements";
+import { useCategories } from "../../../hooks/queries/useOrg";
+import { SkeletonLoader } from "../../../components/feedback/SkeletonLoader";
+import { EmptyState } from "../../../components/feedback/EmptyState";
 
 export default function AnnouncementsPage() {
   const [selectedCategory, setSelectedCategory] = useState<number | "all">("all");

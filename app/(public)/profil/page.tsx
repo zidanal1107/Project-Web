@@ -1,7 +1,7 @@
 "use client";
 
-import { useOrganization, useDepartments } from "../../hooks/queries/useOrg";
-import { SkeletonLoader } from "../../components/feedback/SkeletonLoader";
+import { useOrganization, useDepartments } from "../../../hooks/queries/useOrg";
+import { SkeletonLoader } from "../../../components/feedback/SkeletonLoader";
 import { Building, Mail, Award, CheckCircle2 } from "lucide-react";
 
 export default function ProfilePage() {

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEvents } from "../../hooks/queries/useEvents";
-import { SkeletonLoader } from "../../components/feedback/SkeletonLoader";
+import { useEvents } from "../../../hooks/queries/useEvents";
+import { SkeletonLoader } from "../../../components/feedback/SkeletonLoader";
 import { Calendar, MapPin, Clock } from "lucide-react";
 
 export default function EventsPage() {

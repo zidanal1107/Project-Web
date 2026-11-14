@@ -10,7 +10,7 @@ import {
   User,
   ArrowRight,
 } from "lucide-react";
-import { useSubmitApplication } from "../../hooks/queries/useMembership";
+import { useSubmitApplication } from "../../../hooks/queries/useMembership";
 
 export default function MemberRegisterPage() {
   const [fullName, setFullName] = useState("");

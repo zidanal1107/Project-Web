@@ -11,11 +11,11 @@ import {
   CheckCircle,
   Hash,
 } from "lucide-react";
-import { useDocuments } from "../../hooks/queries/useDocuments";
-import { SkeletonLoader } from "../../components/feedback/SkeletonLoader";
-import { EmptyState } from "../../components/feedback/EmptyState";
-import { useAuth } from "../../context/AuthContext";
-import type { OrgDocument } from "../../types/client/document.types";
+import { useDocuments } from "../../../hooks/queries/useDocuments";
+import { SkeletonLoader } from "../../../components/feedback/SkeletonLoader";
+import { EmptyState } from "../../../components/feedback/EmptyState";
+import { useAuth } from "../../../context/AuthContext";
+import type { OrgDocument } from "../../../types/client/document.types";
 
 export default function DocumentsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
