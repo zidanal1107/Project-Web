@@ -4,9 +4,9 @@ import { useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Calendar, User, Share2, Check, Tag } from "lucide-react";
-import { useAnnouncementDetail } from "../../../hooks/queries/useAnnouncements";
-import { SkeletonLoader } from "../../../components/feedback/SkeletonLoader";
-import { ErrorBanner } from "../../../components/feedback/ErrorBanner";
+import { useAnnouncementDetail } from "@/hooks/queries/useAnnouncements";
+import { SkeletonLoader } from "@/components/feedback/SkeletonLoader";
+import { ErrorBanner } from "@/components/feedback/ErrorBanner";
 
 export default function AnnouncementDetailPage() {
   const params = useParams<{ id: string }>();

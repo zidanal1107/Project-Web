@@ -1,22 +1,18 @@
 export const API_ENDPOINTS = {
   AUTH: {
-    LOGIN: '/auth/login',
-    LOGOUT: '/auth/logout',
-    ME: '/auth/me',
+    LOGIN: '/auth/login',   // backend belum dibuat
+    LOGOUT: '/auth/logout', // backend belum dibuat
+    ME: '/auth/me',         // backend belum dibuat
   },
   ANNOUNCEMENTS: {
     LIST: '/announcements',
-    DETAIL: (slug: string) => `/announcements/${slug}`,
+    DETAIL: (id: string) => `/announcements/${id}`,
     CREATE: '/announcements',
     UPDATE: (id: string) => `/announcements/${id}`,
     DELETE: (id: string) => `/announcements/${id}`,
   },
-  DOCUMENTS: {
-    LIST: '/documents',
-    DETAIL: (id: string) => `/documents/${id}`,
-    DOWNLOAD: (id: string) => `/documents/${id}/download`,
-    UPLOAD: '/documents',
-    DELETE: (id: string) => `/documents/${id}`,
+  CATEGORIES: {
+    LIST: '/categories',
   },
   EVENTS: {
     LIST: '/events',
@@ -26,9 +22,21 @@ export const API_ENDPOINTS = {
     DELETE: (id: string) => `/events/${id}`,
   },
   ORGANIZATION: {
-    PROFILE: '/org/profile',
-    LEADERSHIP: '/org/leadership',
-    COMMISSARIATS: '/org/commissariats',
+    PROFILE: '/organization', // GET dan PUT
+  },
+  DEPARTMENTS: {
+    LIST: '/departments',
+  },
+  MEMBER_APPLICATIONS: {
+    LIST: '/member-applications',
+    CREATE: '/member-applications', // pendaftaran publik
+    APPROVE: (id: string) => `/member-applications/${id}/approve`,
+    REJECT: (id: string) => `/member-applications/${id}/reject`,
+  },
+  MEMBERS: {
+    LIST: '/members',
+  },
+  AUDIT_LOGS: {
+    LIST: '/audit-logs',
   },
 } as const;
-
