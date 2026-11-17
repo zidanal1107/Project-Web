@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone, Globe } from "lucide-react";
+import { CurrentYear } from "./CurrentYear";
 
 export function Footer() {
   return (
@@ -102,7 +103,7 @@ export function Footer() {
 
         <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p>
-            © {new Date().getFullYear()} Pimpinan Cabang IMM Malang. All rights
+            © <CurrentYear/> Pimpinan Cabang IMM Malang. All rights
             reserved.
           </p>
           <p className="text-slate-400">
