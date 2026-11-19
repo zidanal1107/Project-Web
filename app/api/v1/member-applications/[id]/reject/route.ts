@@ -2,18 +2,18 @@ import { NextResponse } from "next/server";
 import MemberApplicationService, {
     ApplicationNotFoundError,
     ApplicationNotPendingError,
-} from "@../../../services/server/member-application.service";
-import { idParamsSchema } from "@../../../validations/common";
-import { rejectBodySchema } from "@../../../validations/member-application.validation";
-import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
-import { serialize } from "@../../../lib/serialize";
+} from "@/services/server/member-application.service";
+import { idParamsSchema } from "@/validations/common";
+import { rejectBodySchema } from "@/validations/member-application.validation";
+import { requireAdmin, UnauthorizedError } from "@/lib/Auth";
+import { serialize } from "@/lib/serialize";
 
 export async function POST(
     request: Request,
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const actor = await getCurrentAdmin();
+        const actor = await requireAdmin();
         if (!actor) {
             return NextResponse.json(
                 { success: false, message: "Unauthorized" },
@@ -61,6 +61,13 @@ export async function POST(
             data: serialize(result),
         });
     } catch (error) {
+        if (error instanceof UnauthorizedError) {
+            return NextResponse.json(
+                { success: false, message: "Unauthorized" },
+                { status: 401 }
+            );
+        }
+        
         if (error instanceof ApplicationNotFoundError) {
             return NextResponse.json(
                 { success: false, message: "Application not found" },

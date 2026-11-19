@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import MemberApplicationService, {
     DuplicateApplicationError,
-} from "@../../../services/server/member-application.service";
-import { memberApplicationBodySchema, memberApplicationQuerySchema } from "@../../../validations/member-application.validation";
-import { getSystemActor } from "@../../../lib/system-actor";
-import { serialize } from "@../../../lib/serialize";
-import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
+} from "@/services/server/member-application.service";
+import { memberApplicationBodySchema, memberApplicationQuerySchema } from "@/validations/member-application.validation";
+import { getSystemActor } from "@/lib/system-actor";
+import { serialize } from "@/lib/serialize";
+import { requireAdmin, UnauthorizedError } from "@/lib/Auth";
 
 export async function POST(request: Request) {
     try {
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
     try {
-        const actor = await getCurrentAdmin();
+        const actor = await requireAdmin();
         if (!actor) {
             return NextResponse.json(
                 { success: false, message: "Unauthorized" },
@@ -76,7 +76,7 @@ export async function GET(request: Request) {
 
         if (!parsed.success) {
             console.error("ERROR parsed in GET /member-applications: ", parsed.error.flatten().fieldErrors);
-            
+
             return NextResponse.json(
                 {
                     success: false,
@@ -112,6 +112,13 @@ export async function GET(request: Request) {
             },
         });
     } catch (error) {
+        if (error instanceof UnauthorizedError) {
+            return NextResponse.json(
+                { success: false, message: "Unauthorized" },
+                { status: 401 }
+            );
+        }
+
         console.error("ERROR /member-applications get all: ", error);
         return NextResponse.json(
             { success: false, message: "Internal server error" },

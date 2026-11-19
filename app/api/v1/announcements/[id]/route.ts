@@ -1,10 +1,10 @@
 // app/api/v1/announcements/[id]/route.ts
 import { NextResponse } from "next/server";
-import AnnouncementService, {AnnouncementNotFoundError, CategoryNotFoundError} from "@../../../services/server/announcement.service";
-import { serialize } from "@/../../lib/serialize";
-import { UpdateAnnouncementData,  } from "@../../../types/Announcement";
-import { paramsSchema, bodySchema } from "@../../../validations/announcement.validation";
-import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
+import AnnouncementService, {AnnouncementNotFoundError, CategoryNotFoundError} from "@/services/server/announcement.service";
+import { serialize } from "@/lib/serialize";
+import { UpdateAnnouncementData,  } from "@/types/Announcement";
+import { paramsSchema, bodySchema } from "@/validations/announcement.validation";
+import { requireAdmin, UnauthorizedError } from "@/lib/Auth";
 
 export async function GET(
   _request: Request,
@@ -47,7 +47,7 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const actor = await getCurrentAdmin(); // sementara, nanti dari sesi login
+    const actor = await requireAdmin(); // sementara, nanti dari sesi login
 
     const parsedParams = paramsSchema.safeParse(await params);
     if (!parsedParams.success) {
@@ -95,6 +95,13 @@ export async function PUT(
 
     return NextResponse.json({ success: true, data: serialize(updated) });
   } catch (error) {
+     if (error instanceof UnauthorizedError) {
+      return NextResponse.json(
+        { success: false, message: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+
     if (error instanceof AnnouncementNotFoundError) {
       return NextResponse.json(
         { success: false, message: "Announcement not found" },
@@ -120,7 +127,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const actor = await getCurrentAdmin(); // sementara, nanti dari sesi login
+    const actor = await requireAdmin(); // sementara, nanti dari sesi login
 
     const parsed = paramsSchema.safeParse(await params);
     if (!parsed.success) {
@@ -137,6 +144,13 @@ export async function DELETE(
       message: "Announcement deleted",
     });
   } catch (error) {
+     if (error instanceof UnauthorizedError) {
+      return NextResponse.json(
+        { success: false, message: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+
     if (error instanceof AnnouncementNotFoundError) {
       return NextResponse.json(
         { success: false, message: "Announcement not found" },

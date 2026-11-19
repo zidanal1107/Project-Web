@@ -1,11 +1,11 @@
 // app/api/v1/events/[id]/route.ts
 import { NextResponse } from "next/server";
-import EventService, { EventNotFoundError } from "@../../../services/server/event.service";
-import { serialize } from "@../../../lib/serialize";
-import { idParamsSchema } from "@../../../validations/common";
-import { UpdateEventData } from "@../../../types/Event";
-import { eventBodySchema } from "@../../../validations/event.validation";
-import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
+import EventService, { EventNotFoundError } from "@/services/server/event.service";
+import { serialize } from "@/lib/serialize";
+import { idParamsSchema } from "@/validations/common";
+import { UpdateEventData } from "@/types/Event";
+import { eventBodySchema } from "@/validations/event.validation";
+import { requireAdmin, UnauthorizedError } from "@/lib/Auth";
 
 export async function GET(
     _request: Request,
@@ -43,7 +43,7 @@ export async function PUT(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const actor = await getCurrentAdmin();
+        const actor = await requireAdmin();
 
         const parsedParams = idParamsSchema.safeParse(await params);
         if (!parsedParams.success) {
@@ -92,6 +92,13 @@ export async function PUT(
 
         return NextResponse.json({ success: true, data: serialize(updated) });
     } catch (error) {
+        if (error instanceof UnauthorizedError) {
+            return NextResponse.json(
+                { success: false, message: "Unauthorized" },
+                { status: 401 }
+            );
+        }
+
         if (error instanceof EventNotFoundError) {
             return NextResponse.json(
                 { success: false, message: "Event not found" },
@@ -111,7 +118,7 @@ export async function DELETE(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const actor = await getCurrentAdmin();
+        const actor = await requireAdmin();
 
         const parsed = idParamsSchema.safeParse(await params);
         if (!parsed.success) {
@@ -128,6 +135,12 @@ export async function DELETE(
             message: "Event deleted",
         });
     } catch (error) {
+        if (error instanceof UnauthorizedError) {
+            return NextResponse.json(
+                { success: false, message: "Unauthorized" },
+                { status: 401 }
+            );
+        }
         if (error instanceof EventNotFoundError) {
             return NextResponse.json(
                 { success: false, message: "Event not found" },

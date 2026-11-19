@@ -1,13 +1,13 @@
 // app/api/v1/members/route.ts
 import { NextResponse } from "next/server";
-import MemberService from "@../../../services/server/member.service";
-import { memberQuerySchema } from "@../../../validations/member.validation";
-import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
-import { serialize } from "@../../../lib/serialize";
+import MemberService from "@/services/server/member.service";
+import { memberQuerySchema } from "@/validations/member.validation";
+import { requireAdmin, UnauthorizedError } from "@/lib/Auth";
+import { serialize } from "@/lib/serialize";
 
 export async function GET(request: Request) {
     try {
-        const actor = await getCurrentAdmin();
+        const actor = await requireAdmin();
         if (!actor) {
             return NextResponse.json(
                 { success: false, message: "Unauthorized" },
@@ -52,6 +52,13 @@ export async function GET(request: Request) {
             },
         });
     } catch (error) {
+        if (error instanceof UnauthorizedError) {
+            return NextResponse.json(
+                { success: false, message: "Unauthorized" },
+                { status: 401 }
+            );
+        }
+
         console.error("ERROR /members get all: ", error);
         return NextResponse.json(
             { success: false, message: "Internal server error" },

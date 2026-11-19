@@ -1,15 +1,11 @@
+// lib/session.ts
 import "server-only";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
+import { SessionPayload } from "@/types/SessionPayload";
 
 const COOKIE_NAME = "session";
-const MAX_AGE = 60 * 60 * 24 * 7; // 7 hari
-
-export type SessionPayload = {
-  adminId: string;
-  email: string;
-  organizationId: string;
-};
+const MAX_AGE = 60 * 60 * 24; // 1 hari (detik)
 
 function getKey() {
   const secret = process.env.AUTH_SECRET;
@@ -60,7 +56,7 @@ export async function readSession(): Promise<SessionPayload | null> {
       organizationId: payload.org,
     };
   } catch {
-    return null; // token rusak atau kedaluwarsa
+    return null; // token rusak, dipalsukan, atau kedaluwarsa
   }
 }
 

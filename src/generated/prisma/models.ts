@@ -8,13 +8,13 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/AdminUser.js'
-export type * from './models/Announcement.js'
-export type * from './models/AuditLog.js'
-export type * from './models/Category.js'
-export type * from './models/Dapartemen.js'
-export type * from './models/Event.js'
-export type * from './models/Member.js'
-export type * from './models/MemberApp.js'
-export type * from './models/Organization.js'
-export type * from './commonInputTypes.js'
+export type * from './models/AdminUser'
+export type * from './models/Announcement'
+export type * from './models/AuditLog'
+export type * from './models/Category'
+export type * from './models/Dapartemen'
+export type * from './models/Event'
+export type * from './models/Member'
+export type * from './models/MemberApp'
+export type * from './models/Organization'
+export type * from './commonInputTypes'

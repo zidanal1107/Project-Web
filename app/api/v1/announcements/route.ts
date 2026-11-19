@@ -1,9 +1,9 @@
 // app/api/v1/announcements/route.ts
 import { NextResponse } from "next/server";
-import AnnouncementService, { CategoryNotFoundError } from "@../../../services/server/announcement.service";
-import { serialize } from "@../../../lib/serialize";
-import { querySchema, bodySchema } from "@../../../validations/announcement.validation";
-import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
+import AnnouncementService, { CategoryNotFoundError } from "@/services/server/announcement.service";
+import { serialize } from "@/lib/serialize";
+import { querySchema, bodySchema } from "@/validations/announcement.validation";
+import { requireAdmin, UnauthorizedError } from "@/lib/Auth";
 
 export async function GET(request: Request) {
     try {
@@ -43,7 +43,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
     try {
-        const actor = await getCurrentAdmin();
+        const actor = await requireAdmin();
         if (!actor) {
             return NextResponse.json(
                 { success: false, message: "Unauthorized" },
@@ -86,6 +86,13 @@ export async function POST(request: Request) {
             { status: 201 }
         );
     } catch (error) {
+        if (error instanceof UnauthorizedError) {
+            return NextResponse.json(
+                { success: false, message: "Unauthorized" },
+                { status: 401 }
+            );
+        }
+
         if (error instanceof CategoryNotFoundError) {
             return NextResponse.json(
                 { success: false, message: "Category not found" },

@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import OrganizationService, {
     OrganizationNotFoundError,
-} from "@../../../services/server/organization.service";
-import { idParamsSchema } from "@../../../validations/common";
-import { organizationBodySchema } from "@../../../validations/organization.validation";
-import type { UpdateOrganizationData } from "@../../../types/organization";
-import { getCurrentAdmin } from "@../../../lib/getCurrentAdmin";
-import { serialize } from "@../../../lib/serialize";
+} from "@/services/server/organization.service";
+import { idParamsSchema } from "@/validations/common";
+import { organizationBodySchema } from "@/validations/organization.validation";
+import type { UpdateOrganizationData } from "@/types/organization";
+import { requireAdmin, UnauthorizedError } from "@/lib/Auth";
+import { serialize } from "@/lib/serialize";
 
 export async function GET(
     _request: Request,
@@ -44,7 +44,7 @@ export async function PUT(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const actor = await getCurrentAdmin();
+        const actor = await requireAdmin();
 
         const parsedParams = idParamsSchema.safeParse(await params);
         if (!parsedParams.success) {
@@ -101,6 +101,13 @@ export async function PUT(
 
         return NextResponse.json({ success: true, data: serialize(updated) });
     } catch (error) {
+        if (error instanceof UnauthorizedError) {
+            return NextResponse.json(
+                { success: false, message: "Unauthorized" },
+                { status: 401 }
+            );
+        }
+
         if (error instanceof OrganizationNotFoundError) {
             return NextResponse.json(
                 { success: false, message: "Organization not found" },
