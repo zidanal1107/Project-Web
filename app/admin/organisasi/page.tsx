@@ -23,6 +23,7 @@ export default function ManageOrganization() {
   // Sinkronkan state form ketika data org selesai dimuat oleh React Query
   useEffect(() => {
     if (org) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setName(org.name || "Pimpinan Cabang IMM Malang");
       setDescription(org.description || "");
       setVision(org.vision || "");

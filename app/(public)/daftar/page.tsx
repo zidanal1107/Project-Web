@@ -44,10 +44,6 @@ export default function MemberRegisterPage() {
             <h1 className="text-2xl font-black text-slate-900 dark:text-white">
               Formulir Pendaftaran Kader Baru
             </h1>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Tabel Database: <code>MemberApplication</code> • Rekrutmen &
-              Keanggotaan
-            </p>
           </div>
         </div>
 
@@ -93,7 +89,7 @@ export default function MemberRegisterPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                Nama Lengkap (full_name)
+                Nama Lengkap
               </label>
               <div className="relative">
                 <User className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -110,7 +106,7 @@ export default function MemberRegisterPage() {
 
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                Alamat Email Aktif (email)
+                Alamat Email Aktif
               </label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -119,7 +115,7 @@ export default function MemberRegisterPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="ilham@student.umm.ac.id"
+                  placeholder="ilham@webmail.umm.ac.id"
                   className="w-full pl-9 pr-4 py-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:text-white"
                 />
               </div>
@@ -127,7 +123,7 @@ export default function MemberRegisterPage() {
 
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                Nomor WhatsApp / Telepon (phone)
+                Nomor WhatsApp / Telepon
               </label>
               <div className="relative">
                 <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />

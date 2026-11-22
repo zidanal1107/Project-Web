@@ -4,7 +4,7 @@ import { Footer } from "@/components/common/Footer";
 
 export default function PublicLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-black text-zinc-900 dark:text-zinc-100 bg-ambient-gradient transition-colors">
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />

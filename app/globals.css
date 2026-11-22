@@ -1,101 +1,145 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #09090b;
+  --card: #ffffff;
+  --card-foreground: #09090b;
+  --border: rgba(0, 0, 0, 0.08);
+  --primary: #dc2626;
+  --primary-foreground: #ffffff;
+  --accent-yellow: #d97706;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #000000;
+  --foreground: #f4f4f5;
+  --card: #09090b;
+  --card-foreground: #f4f4f5;
+  --border: rgba(255, 255, 255, 0.07);
+  --primary: #ef4444;
+  --primary-foreground: #ffffff;
+  --accent-yellow: #facc15;
+  --muted: #121214;
+  --muted-foreground: #a1a1aa;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+/* Red-Yellow Gradient Utilities for Light and Dark Modes */
+.bg-gradient-imm {
+  background-image: linear-gradient(135deg, #dc2626 0%, #ea580c 45%, #eab308 100%);
+}
+.dark .bg-gradient-imm {
+  background-image: linear-gradient(135deg, #ef4444 0%, #f97316 45%, #facc15 100%);
+}
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+.text-gradient-imm {
+  background-image: linear-gradient(135deg, #b91c1c 0%, #ea580c 45%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.dark .text-gradient-imm {
+  background-image: linear-gradient(135deg, #f87171 0%, #fb923c 45%, #fde047 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+/* Ambient Radial Mesh Background */
+.bg-ambient-gradient {
+  background-image: radial-gradient(ellipse 90% 50% at 50% -5%, rgba(239, 68, 68, 0.08) 0%, rgba(245, 158, 11, 0.05) 40%, transparent 80%);
+}
+.dark .bg-ambient-gradient {
+  background-image: radial-gradient(ellipse 90% 50% at 50% -5%, rgba(220, 38, 38, 0.24) 0%, rgba(234, 179, 8, 0.12) 40%, transparent 80%);
+}
 
-    --primary: 0 72% 51%; /* Crimson / Red IMM */
-    --primary-foreground: 210 40% 98%;
+/* Modern Portal Bento Card (Linear / Vercel style) */
+.portal-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dark .portal-card {
+  background-color: rgba(10, 10, 12, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+.portal-card:hover {
+  border-color: rgba(220, 38, 38, 0.35);
+  box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.08);
+  transform: translateY(-1px);
+}
+.dark .portal-card:hover {
+  border-color: rgba(239, 68, 68, 0.4);
+  box-shadow: 0 0 30px -5px rgba(239, 68, 68, 0.2), inset 0 1px 0 0 rgba(250, 204, 21, 0.15);
+  transform: translateY(-1px);
+}
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+/* Glowing Gradient Border Container (Border Beam / Edge Highlight) */
+.portal-glow-border {
+  position: relative;
+  border-radius: 1.25rem;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.45) 0%, rgba(234, 179, 8, 0.35) 50%, rgba(220, 38, 38, 0.2) 100%);
+  box-shadow: 0 10px 40px -10px rgba(220, 38, 38, 0.12);
+}
+.dark .portal-glow-border {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.5) 0%, rgba(250, 204, 21, 0.35) 50%, rgba(239, 68, 68, 0.15) 100%);
+  box-shadow: 0 0 50px -10px rgba(239, 68, 68, 0.22);
+}
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+/* Modern Input without harsh chalky outline */
+.portal-input {
+  background-color: rgba(244, 244, 245, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  color: #09090b;
+  transition: all 0.2s ease;
+}
+.dark .portal-input {
+  background-color: rgba(18, 18, 20, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f4f4f5;
+}
+.portal-input:focus {
+  outline: none;
+  border-color: rgba(220, 38, 38, 0.6);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+.dark .portal-input:focus {
+  outline: none;
+  border-color: rgba(239, 68, 68, 0.7);
+  box-shadow: 0 0 20px -3px rgba(239, 68, 68, 0.35), 0 0 0 1px rgba(239, 68, 68, 0.5);
+}
 
-    --accent: 38 92% 50%; /* Gold / Amber */
-    --accent-foreground: 222.2 47.4% 11.2%;
+/* Prevent default browser ugly focus outline in dark mode */
+*:focus-visible {
+  outline: 2px solid rgba(239, 68, 68, 0.45);
+  outline-offset: 1px;
+}
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 0 72% 51%;
-
-    --radius: 0.625rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 6%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 0 72% 51%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 38 92% 50%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 0 72% 51%;
-  }
-
-  * {
-    border-color: hsl(var(--border));
-  }
-
-  body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.4);
 }

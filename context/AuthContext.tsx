@@ -7,96 +7,101 @@ import {
   useEffect,
   type ReactNode,
 } from "react";
-import type { User, UserRole, LoginCredentials } from "../types/client/auth.types";
+import type { User, LoginCredentials } from "../types/client/auth.types";
 
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (credentials: LoginCredentials) => Promise<void>;
+  error: string | null;
+  login: (credentials: LoginCredentials) => Promise<boolean>;
   logout: () => void;
-  switchRole: (role: UserRole) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const DEFAULT_ADMIN_USER: User = {
+export const DEMO_ADMIN: User = {
   id: "usr-admin-1",
-  name: "Ahmad Fauzan",
-  email: "admin@imm-malang.or.id",
+  name: "Zidanal (Admin BPH)",
+  email: "zidan@webmail.umm.ac.id",
   role: "admin",
   komisariat: "PC IMM Malang",
   nia: "19.64.08.102",
 };
 
-export const DEFAULT_MEMBER_USER: User = {
-  id: "usr-kader-1",
-  name: "Fauzi Ramadhan",
-  email: "kader@imm-malang.or.id",
-  role: "kader",
-  komisariat: "PK IMM Tamaddun",
-  nia: "21.64.08.455",
+export const DEMO_ADMIN_CREDENTIALS = {
+  email: "zidan@webmail.umm.ac.id",
+  password: "akuganteng123",
 };
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  // 1. Jangan baca localStorage di dalam useState agar tidak error saat SSR
-  const [user, setUser] = useState<User | null>(DEFAULT_ADMIN_USER);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isInitialized, setIsInitialized] = useState(false);
-
-  // 2. Baca localStorage hanya setelah komponen terpasang di browser (client)
-  useEffect(() => {
+  // Inisialisasi lazy langsung dari localStorage tanpa memicu setState di effect
+  const [user, setUser] = useState<User | null>(() => {
+    if (typeof window === "undefined") return null;
     try {
-      const saved = localStorage.getItem("imm_user");
+      const saved = localStorage.getItem("imm_admin_session");
       if (saved) {
-        setUser(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        if (parsed?.role === "admin") return parsed;
       }
-    } catch (error) {
-      console.error("Gagal membaca data user dari localStorage:", error);
-    } finally {
-      setIsInitialized(true);
+    } catch (e) {
+      console.error("Gagal membaca session admin:", e);
     }
-  }, []);
+    return null;
+  });
 
-  // 3. Simpan perubahan ke localStorage hanya setelah proses baca awal selesai
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Sinkronisasi session ke localStorage saat state user berubah
   useEffect(() => {
-    if (!isInitialized) return;
+    if (typeof window === "undefined") return;
 
-    if (user) {
-      localStorage.setItem("imm_user", JSON.stringify(user));
-      localStorage.setItem("imm_auth_token", "mock_jwt_token_imm_malang");
+    if (user && user.role === "admin") {
+      localStorage.setItem("imm_admin_session", JSON.stringify(user));
+      localStorage.setItem("imm_auth_token", "mock_jwt_token_imm_admin");
     } else {
-      localStorage.removeItem("imm_user");
+      localStorage.removeItem("imm_admin_session");
       localStorage.removeItem("imm_auth_token");
     }
-  }, [user, isInitialized]);
+  }, [user]);
 
-  const login = async (credentials: LoginCredentials) => {
+  /**
+   * Premise: ADMIN ONLY
+   */
+  const login = async (credentials: LoginCredentials): Promise<boolean> => {
     setIsLoading(true);
-    await new Promise((res) => setTimeout(res, 500));
+    setError(null);
+
+    await new Promise((res) => setTimeout(res, 400));
     setIsLoading(false);
 
-    if (credentials.email.includes("admin")) {
-      setUser(DEFAULT_ADMIN_USER);
-    } else {
-      setUser({
-        ...DEFAULT_MEMBER_USER,
-        email: credentials.email,
-      });
+    const email = credentials.email.trim().toLowerCase();
+    const password = credentials.password;
+
+    // Validasi akun demo admin yang disiapkan di kode
+    const isDemoAdmin =
+      email === DEMO_ADMIN_CREDENTIALS.email &&
+      (password === DEMO_ADMIN_CREDENTIALS.password || password === "admin123" || password === "admin");
+
+    const isAdminEmail = email.includes("admin") || email === "bph@imm-malang.or.id";
+
+    if (isDemoAdmin || isAdminEmail) {
+      setUser(DEMO_ADMIN);
+      return true;
     }
+
+    const errMessage = "Akses ditolak: Portal ini khusus untuk Administrator. Hubungi pengurus BPH jika membutuhkan hak akses.";
+    setError(errMessage);
+    return false;
   };
 
   const logout = () => {
     setUser(null);
-  };
-
-  const switchRole = (role: UserRole) => {
-    if (role === "guest") {
-      setUser(null);
-    } else if (role === "admin" || role === "pimpinan") {
-      setUser({ ...DEFAULT_ADMIN_USER, role });
-    } else {
-      setUser({ ...DEFAULT_MEMBER_USER, role: "kader" });
+    setError(null);
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("imm_admin_session");
+      localStorage.removeItem("imm_auth_token");
     }
   };
 
@@ -104,11 +109,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     <AuthContext.Provider
       value={{
         user,
-        isAuthenticated: Boolean(user),
+        isAuthenticated: Boolean(user && user.role === "admin"),
         isLoading,
+        error,
         login,
         logout,
-        switchRole,
       }}
     >
       {children}

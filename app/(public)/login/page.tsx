@@ -3,128 +3,115 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useAuth } from "../../../context/AuthContext";
-import { Lock, Mail, ArrowRight } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
+import { Lock, Mail, ArrowRight, AlertCircle } from "lucide-react";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("admin@imm-malang.or.id");
-  const [password, setPassword] = useState("password123");
-  const { login, isLoading } = useAuth();
+  // State kosong tanpa nilai bawaan (tidak autofill)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login, isLoading, error } = useAuth();
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await login({ email, password });
-    if (email.includes("admin")) {
+    const success = await login({ email, password });
+    if (success) {
       router.push("/admin");
-    } else {
-      router.push("/");
-    }
-  };
-
-  const fillQuickAccount = (type: "admin" | "kader") => {
-    if (type === "admin") {
-      setEmail("admin@imm-malang.or.id");
-      setPassword("admin123");
-    } else {
-      setEmail("kader@imm-malang.or.id");
-      setPassword("kader123");
     }
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
-        <div className="text-center space-y-2">
-          <div className="w-12 h-12 bg-red-700 text-white rounded-2xl mx-auto flex items-center justify-center font-bold text-lg shadow-md shadow-red-700/20">
-            IMM
-          </div>
-          <h2 className="text-2xl font-black text-slate-900 dark:text-white">
-            Autentikasi Kader
-          </h2>
-          <p className="text-xs text-slate-500">
-            Masuk untuk mengakses dokumen internal dan panel manajemen organisasi
-          </p>
-        </div>
-
-        {/* Quick Demo Fill Buttons */}
-        <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 space-y-2">
-          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider text-center">
-            Akun Percobaan (Demo)
-          </p>
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={() => fillQuickAccount("admin")}
-              className="py-1.5 px-2 rounded-lg text-xs font-semibold bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300 hover:bg-red-200 cursor-pointer text-center"
-            >
-              Akun Admin (BPH)
-            </button>
-            <button
-              type="button"
-              onClick={() => fillQuickAccount("kader")}
-              className="py-1.5 px-2 rounded-lg text-xs font-semibold bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 hover:bg-amber-200 cursor-pointer text-center"
-            >
-              Akun Kader Aktif
-            </button>
-          </div>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-              Email Kader / NIA
-            </label>
-            <div className="relative">
-              <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-red-600 dark:text-white"
-                placeholder="nama@imm-malang.or.id"
-              />
+    <div className="min-h-[82vh] flex items-center justify-center py-12 px-4 sm:px-6">
+      {/* Modern Gradient Glowing Border Card (Linear / Vercel Aesthetic) */}
+      <div className="portal-glow-border max-w-sm w-full transition-all">
+        <div className="bg-white dark:bg-[#0c0c0e]/95 backdrop-blur-xl p-7 sm:p-8 rounded-[1.2rem] space-y-6">
+          
+          {/* Header with Red-Yellow Gradient Badge */}
+          <div className="text-center space-y-2">
+            <div className="w-10 h-10 bg-gradient-imm text-white rounded-xl mx-auto flex items-center justify-center font-bold text-sm shadow-md shadow-red-500/20">
+              IMM
             </div>
+            <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
+              Masuk Administrator
+            </h2>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400">
+              Akses khusus pengelolaan data & audit organisasi
+            </p>
           </div>
 
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-              Kata Sandi
-            </label>
-            <div className="relative">
-              <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-red-600 dark:text-white"
-                placeholder="••••••••"
-              />
+          {/* Error notification if unauthorized */}
+          {error && (
+            <div className="p-3 rounded-xl bg-red-50/80 dark:bg-red-950/40 border border-red-200/80 dark:border-red-900/60 flex items-start gap-2.5 text-xs text-red-700 dark:text-red-300">
+              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600 dark:text-red-400" />
+              <span>{error}</span>
             </div>
+          )}
+
+          {/* Form with Modern Portal Inputs - Clean without autofill */}
+          <form onSubmit={handleSubmit} className="space-y-4" autoComplete="off">
+            <div>
+              <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+                Email Admin
+              </label>
+              <div className="relative">
+                <Mail className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <input
+                  type="email"
+                  required
+                  autoComplete="off"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="portal-input w-full pl-9 pr-3.5 py-2.5 text-xs rounded-xl font-mono"
+                  placeholder="Masukkan email admin..."
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+                Kata Sandi
+              </label>
+              <div className="relative">
+                <Lock className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <input
+                  type="password"
+                  required
+                  autoComplete="new-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="portal-input w-full pl-9 pr-3.5 py-2.5 text-xs rounded-xl"
+                  placeholder="Masukkan kata sandi..."
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full py-2.5 px-4 rounded-xl font-semibold bg-gradient-imm text-white shadow-md shadow-red-500/20 hover:opacity-95 active:scale-[0.99] transition-all flex items-center justify-center gap-2 text-xs cursor-pointer disabled:opacity-60"
+            >
+              {isLoading ? (
+                <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              ) : (
+                <>
+                  <span>Masuk ke Panel Admin</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </>
+              )}
+            </button>
+          </form>
+
+          {/* Link kembali ke publik */}
+          <div className="pt-2 text-center">
+            <Link
+              href="/"
+              className="text-xs text-zinc-500 dark:text-zinc-400 hover:text-red-600 dark:hover:text-amber-400 transition-colors"
+            >
+              ← Kembali ke Beranda Publik
+            </Link>
           </div>
 
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full py-3 px-4 rounded-xl font-bold bg-red-700 hover:bg-red-800 text-white shadow-lg shadow-red-700/20 active:scale-98 transition-all flex items-center justify-center gap-2 text-sm cursor-pointer"
-          >
-            {isLoading ? (
-              <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            ) : (
-              <>
-                <span>Masuk Sekarang</span>
-                <ArrowRight className="w-4 h-4" />
-              </>
-            )}
-          </button>
-        </form>
-
-        <div className="text-center text-xs text-slate-500">
-          <Link href="/" className="text-red-700 font-semibold hover:underline">
-            Kembali ke Portal Publik
-          </Link>
         </div>
       </div>
     </div>
