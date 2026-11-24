@@ -35,6 +35,7 @@ model Announcement {
 
   Tittle     String    @db.VarChar(200)
   Content    String?   @db.LongText
+  Photo_url  String?   @db.VarChar(255)
   Status     String    @db.VarChar(20)
   Created_at DateTime  @db.Date
   Publish_at DateTime? @db.Date
@@ -99,6 +100,7 @@ model Event {
 
   Tittle      String    @db.VarChar(200)
   Description String    @db.LongText
+  Photo_url   String?   @db.VarChar(255)
   Location    String    @db.VarChar(200)
   Start_at    DateTime? @db.Date
   End_at      DateTime  @db.Date
@@ -119,6 +121,7 @@ model Member {
   Member_Id BigInt @id @map("Member_Id")
 
   Member_No String @db.VarChar(30)
+  Photo_url String?  @db.VarChar(255)
   Joined_at DateTime @db.Date
   Status    String @db.VarChar(20)
 

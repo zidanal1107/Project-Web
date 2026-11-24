@@ -44,6 +44,7 @@ export type AnnouncementMinAggregateOutputType = {
   Announcement_id: bigint | null
   Tittle: string | null
   Content: string | null
+  Photo_url: string | null
   Status: string | null
   Created_at: Date | null
   Publish_at: Date | null
@@ -58,6 +59,7 @@ export type AnnouncementMaxAggregateOutputType = {
   Announcement_id: bigint | null
   Tittle: string | null
   Content: string | null
+  Photo_url: string | null
   Status: string | null
   Created_at: Date | null
   Publish_at: Date | null
@@ -72,6 +74,7 @@ export type AnnouncementCountAggregateOutputType = {
   Announcement_id: number
   Tittle: number
   Content: number
+  Photo_url: number
   Status: number
   Created_at: number
   Publish_at: number
@@ -102,6 +105,7 @@ export type AnnouncementMinAggregateInputType = {
   Announcement_id?: true
   Tittle?: true
   Content?: true
+  Photo_url?: true
   Status?: true
   Created_at?: true
   Publish_at?: true
@@ -116,6 +120,7 @@ export type AnnouncementMaxAggregateInputType = {
   Announcement_id?: true
   Tittle?: true
   Content?: true
+  Photo_url?: true
   Status?: true
   Created_at?: true
   Publish_at?: true
@@ -130,6 +135,7 @@ export type AnnouncementCountAggregateInputType = {
   Announcement_id?: true
   Tittle?: true
   Content?: true
+  Photo_url?: true
   Status?: true
   Created_at?: true
   Publish_at?: true
@@ -231,6 +237,7 @@ export type AnnouncementGroupByOutputType = {
   Announcement_id: bigint
   Tittle: string
   Content: string | null
+  Photo_url: string | null
   Status: string
   Created_at: Date
   Publish_at: Date | null
@@ -268,6 +275,7 @@ export type AnnouncementWhereInput = {
   Announcement_id?: Prisma.BigIntFilter<"Announcement"> | bigint | number
   Tittle?: Prisma.StringFilter<"Announcement"> | string
   Content?: Prisma.StringNullableFilter<"Announcement"> | string | null
+  Photo_url?: Prisma.StringNullableFilter<"Announcement"> | string | null
   Status?: Prisma.StringFilter<"Announcement"> | string
   Created_at?: Prisma.DateTimeFilter<"Announcement"> | Date | string
   Publish_at?: Prisma.DateTimeNullableFilter<"Announcement"> | Date | string | null
@@ -285,6 +293,7 @@ export type AnnouncementOrderByWithRelationInput = {
   Announcement_id?: Prisma.SortOrder
   Tittle?: Prisma.SortOrder
   Content?: Prisma.SortOrderInput | Prisma.SortOrder
+  Photo_url?: Prisma.SortOrderInput | Prisma.SortOrder
   Status?: Prisma.SortOrder
   Created_at?: Prisma.SortOrder
   Publish_at?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -306,6 +315,7 @@ export type AnnouncementWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.AnnouncementWhereInput | Prisma.AnnouncementWhereInput[]
   Tittle?: Prisma.StringFilter<"Announcement"> | string
   Content?: Prisma.StringNullableFilter<"Announcement"> | string | null
+  Photo_url?: Prisma.StringNullableFilter<"Announcement"> | string | null
   Status?: Prisma.StringFilter<"Announcement"> | string
   Created_at?: Prisma.DateTimeFilter<"Announcement"> | Date | string
   Publish_at?: Prisma.DateTimeNullableFilter<"Announcement"> | Date | string | null
@@ -323,6 +333,7 @@ export type AnnouncementOrderByWithAggregationInput = {
   Announcement_id?: Prisma.SortOrder
   Tittle?: Prisma.SortOrder
   Content?: Prisma.SortOrderInput | Prisma.SortOrder
+  Photo_url?: Prisma.SortOrderInput | Prisma.SortOrder
   Status?: Prisma.SortOrder
   Created_at?: Prisma.SortOrder
   Publish_at?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -345,6 +356,7 @@ export type AnnouncementScalarWhereWithAggregatesInput = {
   Announcement_id?: Prisma.BigIntWithAggregatesFilter<"Announcement"> | bigint | number
   Tittle?: Prisma.StringWithAggregatesFilter<"Announcement"> | string
   Content?: Prisma.StringNullableWithAggregatesFilter<"Announcement"> | string | null
+  Photo_url?: Prisma.StringNullableWithAggregatesFilter<"Announcement"> | string | null
   Status?: Prisma.StringWithAggregatesFilter<"Announcement"> | string
   Created_at?: Prisma.DateTimeWithAggregatesFilter<"Announcement"> | Date | string
   Publish_at?: Prisma.DateTimeNullableWithAggregatesFilter<"Announcement"> | Date | string | null
@@ -359,6 +371,7 @@ export type AnnouncementCreateInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -371,6 +384,7 @@ export type AnnouncementUncheckedCreateInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -385,6 +399,7 @@ export type AnnouncementUpdateInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -397,6 +412,7 @@ export type AnnouncementUncheckedUpdateInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -411,6 +427,7 @@ export type AnnouncementCreateManyInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -425,6 +442,7 @@ export type AnnouncementUpdateManyMutationInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -434,6 +452,7 @@ export type AnnouncementUncheckedUpdateManyInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -464,6 +483,7 @@ export type AnnouncementCountOrderByAggregateInput = {
   Announcement_id?: Prisma.SortOrder
   Tittle?: Prisma.SortOrder
   Content?: Prisma.SortOrder
+  Photo_url?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Created_at?: Prisma.SortOrder
   Publish_at?: Prisma.SortOrder
@@ -485,6 +505,7 @@ export type AnnouncementMaxOrderByAggregateInput = {
   Announcement_id?: Prisma.SortOrder
   Tittle?: Prisma.SortOrder
   Content?: Prisma.SortOrder
+  Photo_url?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Created_at?: Prisma.SortOrder
   Publish_at?: Prisma.SortOrder
@@ -499,6 +520,7 @@ export type AnnouncementMinOrderByAggregateInput = {
   Announcement_id?: Prisma.SortOrder
   Tittle?: Prisma.SortOrder
   Content?: Prisma.SortOrder
+  Photo_url?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Created_at?: Prisma.SortOrder
   Publish_at?: Prisma.SortOrder
@@ -658,6 +680,7 @@ export type AnnouncementCreateWithoutAdminUserInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -669,6 +692,7 @@ export type AnnouncementUncheckedCreateWithoutAdminUserInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -710,6 +734,7 @@ export type AnnouncementScalarWhereInput = {
   Announcement_id?: Prisma.BigIntFilter<"Announcement"> | bigint | number
   Tittle?: Prisma.StringFilter<"Announcement"> | string
   Content?: Prisma.StringNullableFilter<"Announcement"> | string | null
+  Photo_url?: Prisma.StringNullableFilter<"Announcement"> | string | null
   Status?: Prisma.StringFilter<"Announcement"> | string
   Created_at?: Prisma.DateTimeFilter<"Announcement"> | Date | string
   Publish_at?: Prisma.DateTimeNullableFilter<"Announcement"> | Date | string | null
@@ -724,6 +749,7 @@ export type AnnouncementCreateWithoutCategoryInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -735,6 +761,7 @@ export type AnnouncementUncheckedCreateWithoutCategoryInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -773,6 +800,7 @@ export type AnnouncementCreateWithoutOrganizationInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -784,6 +812,7 @@ export type AnnouncementUncheckedCreateWithoutOrganizationInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -823,6 +852,7 @@ export type AnnouncementCreateManyAdminUserInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -835,6 +865,7 @@ export type AnnouncementUpdateWithoutAdminUserInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -846,6 +877,7 @@ export type AnnouncementUncheckedUpdateWithoutAdminUserInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -858,6 +890,7 @@ export type AnnouncementUncheckedUpdateManyWithoutAdminUserInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -870,6 +903,7 @@ export type AnnouncementCreateManyCategoryInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -882,6 +916,7 @@ export type AnnouncementUpdateWithoutCategoryInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -893,6 +928,7 @@ export type AnnouncementUncheckedUpdateWithoutCategoryInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -905,6 +941,7 @@ export type AnnouncementUncheckedUpdateManyWithoutCategoryInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -917,6 +954,7 @@ export type AnnouncementCreateManyOrganizationInput = {
   Announcement_id: bigint | number
   Tittle: string
   Content?: string | null
+  Photo_url?: string | null
   Status: string
   Created_at: Date | string
   Publish_at?: Date | string | null
@@ -930,6 +968,7 @@ export type AnnouncementUpdateWithoutOrganizationInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -941,6 +980,7 @@ export type AnnouncementUncheckedUpdateWithoutOrganizationInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -954,6 +994,7 @@ export type AnnouncementUncheckedUpdateManyWithoutOrganizationInput = {
   Announcement_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Tittle?: Prisma.StringFieldUpdateOperationsInput | string
   Content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Publish_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -969,6 +1010,7 @@ export type AnnouncementSelect<ExtArgs extends runtime.Types.Extensions.Internal
   Announcement_id?: boolean
   Tittle?: boolean
   Content?: boolean
+  Photo_url?: boolean
   Status?: boolean
   Created_at?: boolean
   Publish_at?: boolean
@@ -988,6 +1030,7 @@ export type AnnouncementSelectScalar = {
   Announcement_id?: boolean
   Tittle?: boolean
   Content?: boolean
+  Photo_url?: boolean
   Status?: boolean
   Created_at?: boolean
   Publish_at?: boolean
@@ -998,7 +1041,7 @@ export type AnnouncementSelectScalar = {
   Admin_user_Email?: boolean
 }
 
-export type AnnouncementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"Announcement_id" | "Tittle" | "Content" | "Status" | "Created_at" | "Publish_at" | "Organization_Organization_id" | "Category_Category_id" | "Category_Name" | "Admin_user_Admin_id" | "Admin_user_Email", ExtArgs["result"]["announcement"]>
+export type AnnouncementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"Announcement_id" | "Tittle" | "Content" | "Photo_url" | "Status" | "Created_at" | "Publish_at" | "Organization_Organization_id" | "Category_Category_id" | "Category_Name" | "Admin_user_Admin_id" | "Admin_user_Email", ExtArgs["result"]["announcement"]>
 export type AnnouncementInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   Category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
@@ -1016,6 +1059,7 @@ export type $AnnouncementPayload<ExtArgs extends runtime.Types.Extensions.Intern
     Announcement_id: bigint
     Tittle: string
     Content: string | null
+    Photo_url: string | null
     Status: string
     Created_at: Date
     Publish_at: Date | null
@@ -1399,6 +1443,7 @@ export interface AnnouncementFieldRefs {
   readonly Announcement_id: Prisma.FieldRef<"Announcement", 'BigInt'>
   readonly Tittle: Prisma.FieldRef<"Announcement", 'String'>
   readonly Content: Prisma.FieldRef<"Announcement", 'String'>
+  readonly Photo_url: Prisma.FieldRef<"Announcement", 'String'>
   readonly Status: Prisma.FieldRef<"Announcement", 'String'>
   readonly Created_at: Prisma.FieldRef<"Announcement", 'DateTime'>
   readonly Publish_at: Prisma.FieldRef<"Announcement", 'DateTime'>

@@ -39,6 +39,7 @@ export type MemberSumAggregateOutputType = {
 export type MemberMinAggregateOutputType = {
   Member_Id: bigint | null
   Member_No: string | null
+  Photo_url: string | null
   Joined_at: Date | null
   Status: string | null
   Member_app_App_id: bigint | null
@@ -48,6 +49,7 @@ export type MemberMinAggregateOutputType = {
 export type MemberMaxAggregateOutputType = {
   Member_Id: bigint | null
   Member_No: string | null
+  Photo_url: string | null
   Joined_at: Date | null
   Status: string | null
   Member_app_App_id: bigint | null
@@ -57,6 +59,7 @@ export type MemberMaxAggregateOutputType = {
 export type MemberCountAggregateOutputType = {
   Member_Id: number
   Member_No: number
+  Photo_url: number
   Joined_at: number
   Status: number
   Member_app_App_id: number
@@ -78,6 +81,7 @@ export type MemberSumAggregateInputType = {
 export type MemberMinAggregateInputType = {
   Member_Id?: true
   Member_No?: true
+  Photo_url?: true
   Joined_at?: true
   Status?: true
   Member_app_App_id?: true
@@ -87,6 +91,7 @@ export type MemberMinAggregateInputType = {
 export type MemberMaxAggregateInputType = {
   Member_Id?: true
   Member_No?: true
+  Photo_url?: true
   Joined_at?: true
   Status?: true
   Member_app_App_id?: true
@@ -96,6 +101,7 @@ export type MemberMaxAggregateInputType = {
 export type MemberCountAggregateInputType = {
   Member_Id?: true
   Member_No?: true
+  Photo_url?: true
   Joined_at?: true
   Status?: true
   Member_app_App_id?: true
@@ -192,6 +198,7 @@ export type MemberGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 export type MemberGroupByOutputType = {
   Member_Id: bigint
   Member_No: string
+  Photo_url: string | null
   Joined_at: Date
   Status: string
   Member_app_App_id: bigint
@@ -224,6 +231,7 @@ export type MemberWhereInput = {
   NOT?: Prisma.MemberWhereInput | Prisma.MemberWhereInput[]
   Member_Id?: Prisma.BigIntFilter<"Member"> | bigint | number
   Member_No?: Prisma.StringFilter<"Member"> | string
+  Photo_url?: Prisma.StringNullableFilter<"Member"> | string | null
   Joined_at?: Prisma.DateTimeFilter<"Member"> | Date | string
   Status?: Prisma.StringFilter<"Member"> | string
   Member_app_App_id?: Prisma.BigIntFilter<"Member"> | bigint | number
@@ -234,6 +242,7 @@ export type MemberWhereInput = {
 export type MemberOrderByWithRelationInput = {
   Member_Id?: Prisma.SortOrder
   Member_No?: Prisma.SortOrder
+  Photo_url?: Prisma.SortOrderInput | Prisma.SortOrder
   Joined_at?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Member_app_App_id?: Prisma.SortOrder
@@ -249,6 +258,7 @@ export type MemberWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.MemberWhereInput[]
   NOT?: Prisma.MemberWhereInput | Prisma.MemberWhereInput[]
   Member_No?: Prisma.StringFilter<"Member"> | string
+  Photo_url?: Prisma.StringNullableFilter<"Member"> | string | null
   Joined_at?: Prisma.DateTimeFilter<"Member"> | Date | string
   Status?: Prisma.StringFilter<"Member"> | string
   Member_app_App_id?: Prisma.BigIntFilter<"Member"> | bigint | number
@@ -259,6 +269,7 @@ export type MemberWhereUniqueInput = Prisma.AtLeast<{
 export type MemberOrderByWithAggregationInput = {
   Member_Id?: Prisma.SortOrder
   Member_No?: Prisma.SortOrder
+  Photo_url?: Prisma.SortOrderInput | Prisma.SortOrder
   Joined_at?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Member_app_App_id?: Prisma.SortOrder
@@ -276,6 +287,7 @@ export type MemberScalarWhereWithAggregatesInput = {
   NOT?: Prisma.MemberScalarWhereWithAggregatesInput | Prisma.MemberScalarWhereWithAggregatesInput[]
   Member_Id?: Prisma.BigIntWithAggregatesFilter<"Member"> | bigint | number
   Member_No?: Prisma.StringWithAggregatesFilter<"Member"> | string
+  Photo_url?: Prisma.StringNullableWithAggregatesFilter<"Member"> | string | null
   Joined_at?: Prisma.DateTimeWithAggregatesFilter<"Member"> | Date | string
   Status?: Prisma.StringWithAggregatesFilter<"Member"> | string
   Member_app_App_id?: Prisma.BigIntWithAggregatesFilter<"Member"> | bigint | number
@@ -285,6 +297,7 @@ export type MemberScalarWhereWithAggregatesInput = {
 export type MemberCreateInput = {
   Member_Id: bigint | number
   Member_No: string
+  Photo_url?: string | null
   Joined_at: Date | string
   Status: string
   MemberApp: Prisma.MemberAppCreateNestedOneWithoutMemberInput
@@ -293,6 +306,7 @@ export type MemberCreateInput = {
 export type MemberUncheckedCreateInput = {
   Member_Id: bigint | number
   Member_No: string
+  Photo_url?: string | null
   Joined_at: Date | string
   Status: string
   Member_app_App_id: bigint | number
@@ -302,6 +316,7 @@ export type MemberUncheckedCreateInput = {
 export type MemberUpdateInput = {
   Member_Id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Member_No?: Prisma.StringFieldUpdateOperationsInput | string
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   MemberApp?: Prisma.MemberAppUpdateOneRequiredWithoutMemberNestedInput
@@ -310,6 +325,7 @@ export type MemberUpdateInput = {
 export type MemberUncheckedUpdateInput = {
   Member_Id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Member_No?: Prisma.StringFieldUpdateOperationsInput | string
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Member_app_App_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -319,6 +335,7 @@ export type MemberUncheckedUpdateInput = {
 export type MemberCreateManyInput = {
   Member_Id: bigint | number
   Member_No: string
+  Photo_url?: string | null
   Joined_at: Date | string
   Status: string
   Member_app_App_id: bigint | number
@@ -328,6 +345,7 @@ export type MemberCreateManyInput = {
 export type MemberUpdateManyMutationInput = {
   Member_Id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Member_No?: Prisma.StringFieldUpdateOperationsInput | string
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -335,6 +353,7 @@ export type MemberUpdateManyMutationInput = {
 export type MemberUncheckedUpdateManyInput = {
   Member_Id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Member_No?: Prisma.StringFieldUpdateOperationsInput | string
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Member_app_App_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -355,6 +374,7 @@ export type MemberMember_app_App_idMember_app_EmailCompoundUniqueInput = {
 export type MemberCountOrderByAggregateInput = {
   Member_Id?: Prisma.SortOrder
   Member_No?: Prisma.SortOrder
+  Photo_url?: Prisma.SortOrder
   Joined_at?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Member_app_App_id?: Prisma.SortOrder
@@ -369,6 +389,7 @@ export type MemberAvgOrderByAggregateInput = {
 export type MemberMaxOrderByAggregateInput = {
   Member_Id?: Prisma.SortOrder
   Member_No?: Prisma.SortOrder
+  Photo_url?: Prisma.SortOrder
   Joined_at?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Member_app_App_id?: Prisma.SortOrder
@@ -378,6 +399,7 @@ export type MemberMaxOrderByAggregateInput = {
 export type MemberMinOrderByAggregateInput = {
   Member_Id?: Prisma.SortOrder
   Member_No?: Prisma.SortOrder
+  Photo_url?: Prisma.SortOrder
   Joined_at?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Member_app_App_id?: Prisma.SortOrder
@@ -429,6 +451,7 @@ export type MemberUncheckedUpdateOneWithoutMemberAppNestedInput = {
 export type MemberCreateWithoutMemberAppInput = {
   Member_Id: bigint | number
   Member_No: string
+  Photo_url?: string | null
   Joined_at: Date | string
   Status: string
 }
@@ -436,6 +459,7 @@ export type MemberCreateWithoutMemberAppInput = {
 export type MemberUncheckedCreateWithoutMemberAppInput = {
   Member_Id: bigint | number
   Member_No: string
+  Photo_url?: string | null
   Joined_at: Date | string
   Status: string
 }
@@ -459,6 +483,7 @@ export type MemberUpdateToOneWithWhereWithoutMemberAppInput = {
 export type MemberUpdateWithoutMemberAppInput = {
   Member_Id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Member_No?: Prisma.StringFieldUpdateOperationsInput | string
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -466,6 +491,7 @@ export type MemberUpdateWithoutMemberAppInput = {
 export type MemberUncheckedUpdateWithoutMemberAppInput = {
   Member_Id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   Member_No?: Prisma.StringFieldUpdateOperationsInput | string
+  Photo_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Joined_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -475,6 +501,7 @@ export type MemberUncheckedUpdateWithoutMemberAppInput = {
 export type MemberSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   Member_Id?: boolean
   Member_No?: boolean
+  Photo_url?: boolean
   Joined_at?: boolean
   Status?: boolean
   Member_app_App_id?: boolean
@@ -487,13 +514,14 @@ export type MemberSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 export type MemberSelectScalar = {
   Member_Id?: boolean
   Member_No?: boolean
+  Photo_url?: boolean
   Joined_at?: boolean
   Status?: boolean
   Member_app_App_id?: boolean
   Member_app_Email?: boolean
 }
 
-export type MemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"Member_Id" | "Member_No" | "Joined_at" | "Status" | "Member_app_App_id" | "Member_app_Email", ExtArgs["result"]["member"]>
+export type MemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"Member_Id" | "Member_No" | "Photo_url" | "Joined_at" | "Status" | "Member_app_App_id" | "Member_app_Email", ExtArgs["result"]["member"]>
 export type MemberInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   MemberApp?: boolean | Prisma.MemberAppDefaultArgs<ExtArgs>
 }
@@ -506,6 +534,7 @@ export type $MemberPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     Member_Id: bigint
     Member_No: string
+    Photo_url: string | null
     Joined_at: Date
     Status: string
     Member_app_App_id: bigint
@@ -882,6 +911,7 @@ export interface Prisma__MemberClient<T, Null = never, ExtArgs extends runtime.T
 export interface MemberFieldRefs {
   readonly Member_Id: Prisma.FieldRef<"Member", 'BigInt'>
   readonly Member_No: Prisma.FieldRef<"Member", 'String'>
+  readonly Photo_url: Prisma.FieldRef<"Member", 'String'>
   readonly Joined_at: Prisma.FieldRef<"Member", 'DateTime'>
   readonly Status: Prisma.FieldRef<"Member", 'String'>
   readonly Member_app_App_id: Prisma.FieldRef<"Member", 'BigInt'>

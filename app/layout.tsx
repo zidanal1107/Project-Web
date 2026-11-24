@@ -5,6 +5,11 @@ import { Providers } from "../components/Providers";
 export const metadata: Metadata = {
   title: "Pusat Informasi Organisasi",
   description: "Sistem Informasi Terpadu & Audit Akuntabilitas",
+  icons: {
+    icon: "/icon.jpeg",
+    shortcut: "/icon.jpeg",
+    apple: "/icon.jpeg",
+  },
 };
 
 export default function RootLayout({

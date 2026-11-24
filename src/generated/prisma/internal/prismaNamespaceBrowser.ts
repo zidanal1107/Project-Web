@@ -94,6 +94,7 @@ export const AnnouncementScalarFieldEnum = {
   Announcement_id: 'Announcement_id',
   Tittle: 'Tittle',
   Content: 'Content',
+  Photo_url: 'Photo_url',
   Status: 'Status',
   Created_at: 'Created_at',
   Publish_at: 'Publish_at',
@@ -145,6 +146,7 @@ export const EventScalarFieldEnum = {
   Event_id: 'Event_id',
   Tittle: 'Tittle',
   Description: 'Description',
+  Photo_url: 'Photo_url',
   Location: 'Location',
   Start_at: 'Start_at',
   End_at: 'End_at',
@@ -160,6 +162,7 @@ export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof Ev
 export const MemberScalarFieldEnum = {
   Member_Id: 'Member_Id',
   Member_No: 'Member_No',
+  Photo_url: 'Photo_url',
   Joined_at: 'Joined_at',
   Status: 'Status',
   Member_app_App_id: 'Member_app_App_id',
@@ -227,6 +230,7 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 export const AnnouncementOrderByRelevanceFieldEnum = {
   Tittle: 'Tittle',
   Content: 'Content',
+  Photo_url: 'Photo_url',
   Status: 'Status',
   Category_Name: 'Category_Name',
   Admin_user_Email: 'Admin_user_Email'
@@ -265,6 +269,7 @@ export type DapartemenOrderByRelevanceFieldEnum = (typeof DapartemenOrderByRelev
 export const EventOrderByRelevanceFieldEnum = {
   Tittle: 'Tittle',
   Description: 'Description',
+  Photo_url: 'Photo_url',
   Location: 'Location',
   Status: 'Status',
   Admin_user_Email: 'Admin_user_Email'
@@ -275,6 +280,7 @@ export type EventOrderByRelevanceFieldEnum = (typeof EventOrderByRelevanceFieldE
 
 export const MemberOrderByRelevanceFieldEnum = {
   Member_No: 'Member_No',
+  Photo_url: 'Photo_url',
   Status: 'Status',
   Member_app_Email: 'Member_app_Email'
 } as const
