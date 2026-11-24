@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -8,98 +9,160 @@
   --card: #ffffff;
   --card-foreground: #09090b;
   --border: rgba(0, 0, 0, 0.08);
-  --primary: #dc2626;
+  --primary: #ef4444;
   --primary-foreground: #ffffff;
-  --accent-yellow: #d97706;
+  --accent-yellow: #facc15;
   --muted: #f4f4f5;
   --muted-foreground: #71717a;
 }
 
 .dark {
-  --background: #000000;
+  --background: #0d0d0d;
   --foreground: #f4f4f5;
-  --card: #09090b;
+  --card: #141414;
   --card-foreground: #f4f4f5;
-  --border: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.08);
   --primary: #ef4444;
   --primary-foreground: #ffffff;
   --accent-yellow: #facc15;
-  --muted: #121214;
+  --muted: #141414;
   --muted-foreground: #a1a1aa;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
-/* Red-Yellow Gradient Utilities for Light and Dark Modes */
+/* Red-Yellow Gradient Utilities (60-30-10 Rule) */
 .bg-gradient-imm {
-  background-image: linear-gradient(135deg, #dc2626 0%, #ea580c 45%, #eab308 100%);
-}
-.dark .bg-gradient-imm {
-  background-image: linear-gradient(135deg, #ef4444 0%, #f97316 45%, #facc15 100%);
+  background-image: linear-gradient(
+    95deg,
+    #ef4444 0%,
+    #ef4444 75%,
+    #facc15 100%
+  );
 }
 
 .text-gradient-imm {
-  background-image: linear-gradient(135deg, #b91c1c 0%, #ea580c 45%, #d97706 100%);
+  background-image: linear-gradient(
+    95deg,
+    #ef4444 0%,
+    #ef4444 75%,
+    #eab308 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .dark .text-gradient-imm {
-  background-image: linear-gradient(135deg, #f87171 0%, #fb923c 45%, #fde047 100%);
+  background-image: linear-gradient(
+    95deg,
+    #ef4444 0%,
+    #ef4444 75%,
+    #facc15 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 /* Ambient Radial Mesh Background */
 .bg-ambient-gradient {
-  background-image: radial-gradient(ellipse 90% 50% at 50% -5%, rgba(239, 68, 68, 0.08) 0%, rgba(245, 158, 11, 0.05) 40%, transparent 80%);
+  background-image: radial-gradient(
+    ellipse 90% 50% at 50% -5%,
+    rgba(239, 68, 68, 0.08) 0%,
+    rgba(250, 204, 21, 0.05) 40%,
+    transparent 80%
+  );
 }
 .dark .bg-ambient-gradient {
-  background-image: radial-gradient(ellipse 90% 50% at 50% -5%, rgba(220, 38, 38, 0.24) 0%, rgba(234, 179, 8, 0.12) 40%, transparent 80%);
+  background-image: radial-gradient(
+    ellipse 90% 50% at 50% -5%,
+    rgba(239, 68, 68, 0.2) 0%,
+    rgba(250, 204, 21, 0.1) 40%,
+    transparent 80%
+  );
 }
 
-/* Modern Portal Bento Card (Linear / Vercel style) */
+/* Card dengan Gradasi Merah -> Kuning -> Putih */
+/* Card dengan Gradasi Merah & Kuning Cerah */
 .portal-card {
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.dark .portal-card {
-  background-color: rgba(10, 10, 12, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-}
-.portal-card:hover {
-  border-color: rgba(220, 38, 38, 0.35);
-  box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.08);
-  transform: translateY(-1px);
-}
-.dark .portal-card:hover {
-  border-color: rgba(239, 68, 68, 0.4);
-  box-shadow: 0 0 30px -5px rgba(239, 68, 68, 0.2), inset 0 1px 0 0 rgba(250, 204, 21, 0.15);
-  transform: translateY(-1px);
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.22) 0%,
+    rgba(250, 204, 21, 0.34) 55%,
+    rgba(254, 240, 138, 0.5) 100%
+  );
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  backdrop-filter: blur(10px);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
 
-/* Glowing Gradient Border Container (Border Beam / Edge Highlight) */
+.portal-card:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.3) 0%,
+    rgba(250, 204, 21, 0.44) 55%,
+    rgba(254, 240, 138, 0.65) 100%
+  );
+  border-color: rgba(239, 68, 68, 0.55);
+  box-shadow: 0 12px 28px -8px rgba(239, 68, 68, 0.25);
+}
+
+.dark .portal-card {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.32) 0%,
+    rgba(234, 179, 8, 0.24) 55%,
+    rgba(250, 204, 21, 0.16) 100%
+  );
+  border: 1px solid rgba(250, 204, 21, 0.25);
+  box-shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.7);
+}
+
+.dark .portal-card:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.42) 0%,
+    rgba(234, 179, 8, 0.32) 55%,
+    rgba(250, 204, 21, 0.22) 100%
+  );
+  border-color: rgba(250, 204, 21, 0.5);
+  box-shadow: 0 12px 32px -8px rgba(239, 68, 68, 0.35);
+}
+
+/* Glowing Gradient Border Container */
 .portal-glow-border {
   position: relative;
   border-radius: 1.25rem;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(220, 38, 38, 0.45) 0%, rgba(234, 179, 8, 0.35) 50%, rgba(220, 38, 38, 0.2) 100%);
-  box-shadow: 0 10px 40px -10px rgba(220, 38, 38, 0.12);
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.45) 0%,
+    rgba(250, 204, 21, 0.35) 50%,
+    rgba(239, 68, 68, 0.2) 100%
+  );
+  box-shadow: 0 10px 40px -10px rgba(239, 68, 68, 0.12);
 }
 .dark .portal-glow-border {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.5) 0%, rgba(250, 204, 21, 0.35) 50%, rgba(239, 68, 68, 0.15) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.5) 0%,
+    rgba(250, 204, 21, 0.35) 50%,
+    rgba(239, 68, 68, 0.15) 100%
+  );
   box-shadow: 0 0 50px -10px rgba(239, 68, 68, 0.22);
 }
 
-/* Modern Input without harsh chalky outline */
+/* Modern Input */
 .portal-input {
   background-color: rgba(244, 244, 245, 0.7);
   border: 1px solid rgba(0, 0, 0, 0.09);
@@ -113,13 +176,15 @@ body {
 }
 .portal-input:focus {
   outline: none;
-  border-color: rgba(220, 38, 38, 0.6);
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+  border-color: rgba(239, 68, 68, 0.6);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
 }
 .dark .portal-input:focus {
   outline: none;
   border-color: rgba(239, 68, 68, 0.7);
-  box-shadow: 0 0 20px -3px rgba(239, 68, 68, 0.35), 0 0 0 1px rgba(239, 68, 68, 0.5);
+  box-shadow:
+    0 0 20px -3px rgba(239, 68, 68, 0.35),
+    0 0 0 1px rgba(239, 68, 68, 0.5);
 }
 
 /* Prevent default browser ugly focus outline in dark mode */
