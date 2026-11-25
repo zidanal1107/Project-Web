@@ -13,8 +13,20 @@ import {
   User,
   ArrowRight,
   Sparkles,
+  Edit3,
+  ClipboardCheck,
+  AlertCircle,
 } from "lucide-react";
 import { useSubmitApplication } from "../../../hooks/queries/useMembership";
+
+const STORAGE_KEY = "imm_kmd_registration_draft";
+
+interface SavedRegistrationData {
+  applicationId?: string;
+  fullName: string;
+  email: string;
+  phone: string;
+}
 
 const formCardVariants: Variants = {
   hidden: { opacity: 0, y: 24, scale: 0.98 },
@@ -53,9 +65,30 @@ export default function MemberRegisterPage() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [applicationId, setApplicationId] = useState<string | undefined>(
+    undefined
+  );
+  const [isEditing, setIsEditing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const submitMutation = useSubmitApplication();
+
+  // Pulihkan data pendaftaran jika pengguna kembali untuk mengedit
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw) as SavedRegistrationData;
+        if (parsed.fullName) setFullName(parsed.fullName);
+        if (parsed.email) setEmail(parsed.email);
+        if (parsed.phone) setPhone(parsed.phone);
+        if (parsed.applicationId) setApplicationId(parsed.applicationId);
+      }
+    } catch {
+      // Abaikan jika storage tidak tersedia
+    }
+  }, []);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -94,15 +127,56 @@ export default function MemberRegisterPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fullName || !email || !phone) return;
+    setErrorMessage(null);
 
-    await submitMutation.mutateAsync({
-      full_name: fullName,
-      email,
-      phone,
-    });
+    if (!fullName.trim() || !email.trim() || !phone.trim()) return;
 
-    setIsSuccess(true);
+    try {
+      const response = await submitMutation.mutateAsync({
+        full_name: fullName.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+      });
+
+      const returnedId =
+        typeof response === "object" &&
+        response !== null &&
+        "application_id" in response
+          ? String((response as { application_id?: unknown }).application_id)
+          : applicationId;
+
+      if (returnedId) {
+        setApplicationId(returnedId);
+      }
+
+      const payloadToSave: SavedRegistrationData = {
+        applicationId: returnedId,
+        fullName: fullName.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+      };
+
+      try {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payloadToSave));
+      } catch {
+        // Abaikan jika storage penuh/diblokir
+      }
+
+      setIsEditing(false);
+      setIsSuccess(true);
+    } catch (err) {
+      setErrorMessage(
+        err instanceof Error
+          ? err.message
+          : "Terjadi kesalahan saat mengirim data pendaftaran. Silakan coba lagi."
+      );
+    }
+  };
+
+  const handleEditRegistration = () => {
+    setErrorMessage(null);
+    setIsEditing(true);
+    setIsSuccess(false);
   };
 
   return (
@@ -117,19 +191,21 @@ export default function MemberRegisterPage() {
           animate="visible"
           className="relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/90 border border-[#E8E2CC] dark:border-zinc-800 shadow-xs p-6 sm:p-10"
         >
-          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
+          <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
 
           <div className="gsap-reg-reveal flex items-start sm:items-center gap-4 mb-8 pb-6 border-b border-[#E8E2CC] dark:border-zinc-800">
             <div className="w-12 h-12 rounded-xl bg-[#7F1D1D] text-[#FACC15] flex items-center justify-center shadow-xs shrink-0">
-              <UserPlus className="w-6 h-6" />
+              <UserPlus className="w-6 h-6" aria-hidden="true" />
             </div>
             <div>
               <div className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#991B1B] dark:text-[#FACC15] uppercase tracking-[0.14em] mb-1">
-                <Sparkles className="w-3.5 h-3.5" />
+                <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
                 Rekrutmen & Perkaderan
               </div>
               <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-                Formulir Pendaftaran Kader Baru
+                {isEditing
+                  ? "Edit Data Pendaftaran Kader"
+                  : "Formulir Pendaftaran Kader Baru"}
               </h1>
             </div>
           </div>
@@ -150,7 +226,7 @@ export default function MemberRegisterPage() {
                   transition={{ type: "spring", stiffness: 320, damping: 20 }}
                   className="w-16 h-16 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-400 mx-auto flex items-center justify-center"
                 >
-                  <CheckCircle className="w-8 h-8" />
+                  <CheckCircle className="w-8 h-8" aria-hidden="true" />
                 </motion.div>
 
                 <h2 className="text-xl sm:text-2xl font-extrabold text-zinc-900 dark:text-white">
@@ -174,7 +250,7 @@ export default function MemberRegisterPage() {
                 </p>
 
                 <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
-                  Tim Kaderisasi PC IMM Malang akan memverifikasi berkas Anda.
+                  Silakan lanjutkan ke tahap Screening atau periksa kembali data pendaftaran Anda.
                 </p>
 
                 <div className="pt-5 flex flex-wrap justify-center gap-3">
@@ -182,15 +258,11 @@ export default function MemberRegisterPage() {
                     type="button"
                     whileHover={{ y: -2, scale: 1.02 }}
                     whileTap={{ scale: 0.97 }}
-                    onClick={() => {
-                      setFullName("");
-                      setEmail("");
-                      setPhone("");
-                      setIsSuccess(false);
-                    }}
-                    className="px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-[#F5EFD6] dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-[#E8E2CC] dark:border-zinc-700 hover:border-[#991B1B]/40 dark:hover:border-[#FACC15]/40 transition-colors cursor-pointer"
+                    onClick={handleEditRegistration}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-[#F5EFD6] dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-[#E8E2CC] dark:border-zinc-700 hover:border-[#991B1B]/40 dark:hover:border-[#FACC15]/40 transition-colors cursor-pointer"
                   >
-                    Daftar Lagi
+                    <Edit3 className="w-4 h-4" aria-hidden="true" />
+                    Edit Pendaftaran
                   </motion.button>
 
                   <motion.div
@@ -198,11 +270,15 @@ export default function MemberRegisterPage() {
                     whileTap={{ scale: 0.97 }}
                   >
                     <Link
-                      href="/"
-                      className="px-5 py-2.5 text-xs sm:text-sm font-bold bg-[#7F1D1D] hover:bg-[#991B1B] text-white rounded-lg shadow-xs transition-colors flex items-center gap-1.5"
+                      href="/screening"
+                      className="px-5 py-2.5 text-xs sm:text-sm font-bold bg-[#7F1D1D] hover:bg-[#991B1B] text-white rounded-lg shadow-xs transition-colors inline-flex items-center gap-2"
                     >
-                      Kembali ke Beranda
-                      <ArrowRight className="w-4 h-4" />
+                      <ClipboardCheck
+                        className="w-4 h-4 text-[#FACC15]"
+                        aria-hidden="true"
+                      />
+                      Screening
+                      <ArrowRight className="w-4 h-4" aria-hidden="true" />
                     </Link>
                   </motion.div>
                 </div>
@@ -217,6 +293,16 @@ export default function MemberRegisterPage() {
                 onSubmit={handleSubmit}
                 className="space-y-5"
               >
+                {errorMessage && (
+                  <div
+                    role="alert"
+                    className="flex items-center gap-2.5 p-3.5 rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 text-xs sm:text-sm text-red-700 dark:text-red-300 font-medium"
+                  >
+                    <AlertCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
                 <div>
                   <label
                     htmlFor="reg-full-name"
@@ -225,7 +311,10 @@ export default function MemberRegisterPage() {
                     Nama Lengkap
                   </label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-[#991B1B] dark:text-[#FACC15] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <User
+                      className="w-4 h-4 text-[#991B1B] dark:text-[#FACC15] absolute left-3.5 top-1/2 -translate-y-1/2"
+                      aria-hidden="true"
+                    />
                     <input
                       id="reg-full-name"
                       type="text"
@@ -246,7 +335,10 @@ export default function MemberRegisterPage() {
                     Alamat Email Aktif
                   </label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-[#B45309] dark:text-[#FACC15] absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <Mail
+                      className="w-4 h-4 text-[#B45309] dark:text-[#FACC15] absolute left-3.5 top-1/2 -translate-y-1/2"
+                      aria-hidden="true"
+                    />
                     <input
                       id="reg-email"
                       type="email"
@@ -267,7 +359,10 @@ export default function MemberRegisterPage() {
                     Nomor WhatsApp / Telepon
                   </label>
                   <div className="relative">
-                    <Phone className="w-4 h-4 text-emerald-700 dark:text-emerald-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <Phone
+                      className="w-4 h-4 text-emerald-700 dark:text-emerald-400 absolute left-3.5 top-1/2 -translate-y-1/2"
+                      aria-hidden="true"
+                    />
                     <input
                       id="reg-phone"
                       type="tel"
@@ -289,10 +384,12 @@ export default function MemberRegisterPage() {
                     className="w-full py-3.5 px-4 rounded-lg font-bold bg-[#7F1D1D] hover:bg-[#991B1B] disabled:opacity-60 text-white shadow-xs transition-colors flex items-center justify-center gap-2 text-sm cursor-pointer"
                   >
                     {submitMutation.isPending
-                      ? "Mengirim Formulir..."
+                      ? "Menyimpan Data..."
+                      : isEditing
+                      ? "Simpan Perubahan Pendaftaran"
                       : "Kirim Pendaftaran Anggota"}
                     {!submitMutation.isPending && (
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4" aria-hidden="true" />
                     )}
                   </motion.button>
                 </div>

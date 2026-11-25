@@ -130,7 +130,7 @@ export default function ProfilePage() {
               transition={{ type: "spring", stiffness: 320, damping: 24 }}
               className="group relative overflow-hidden rounded-xl bg-white dark:bg-zinc-900/90 border border-[#E8E2CC] dark:border-zinc-800 hover:border-[#991B1B]/40 dark:hover:border-[#FACC15]/40 p-7 sm:p-8 shadow-xs hover:shadow-md transition-[border-color,box-shadow] space-y-4"
             >
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
+              <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wide bg-[#F5EFD6] dark:bg-zinc-800 text-[#991B1B] dark:text-[#FACC15] border border-[#E8E2CC] dark:border-zinc-700">
                 <Award className="w-3.5 h-3.5" />
                 Visi Organisasi (Vision)
@@ -149,7 +149,7 @@ export default function ProfilePage() {
               transition={{ type: "spring", stiffness: 320, damping: 24 }}
               className="group relative overflow-hidden rounded-xl bg-white dark:bg-zinc-900/90 border border-[#E8E2CC] dark:border-zinc-800 hover:border-[#991B1B]/40 dark:hover:border-[#FACC15]/40 p-7 sm:p-8 shadow-xs hover:shadow-md transition-[border-color,box-shadow] space-y-4"
             >
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#B45309] to-[#FACC15]" />
+              <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-[#B45309] to-[#FACC15]" />
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wide bg-[#F5EFD6] dark:bg-zinc-800 text-[#B45309] dark:text-[#FACC15] border border-[#E8E2CC] dark:border-zinc-700">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 Misi Organisasi (Mission)
@@ -196,7 +196,7 @@ export default function ProfilePage() {
                   transition={{ type: "spring", stiffness: 320, damping: 24 }}
                   className="group relative overflow-hidden rounded-xl bg-white dark:bg-zinc-900/90 border border-[#E8E2CC] dark:border-zinc-800 hover:border-[#991B1B]/40 dark:hover:border-[#FACC15]/40 p-6 shadow-xs hover:shadow-md transition-[border-color,box-shadow] flex flex-col justify-between"
                 >
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3.5">

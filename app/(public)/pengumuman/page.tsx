@@ -196,7 +196,7 @@ export default function AnnouncementsPage() {
                   transition={{ type: "spring", stiffness: 320, damping: 24 }}
                   className="group relative flex flex-col justify-between rounded-xl bg-white dark:bg-zinc-900/90 border border-[#E8E2CC] dark:border-zinc-800 hover:border-[#991B1B]/40 dark:hover:border-[#FACC15]/40 p-6 shadow-xs hover:shadow-md transition-[border-color,box-shadow] overflow-hidden"
                 >
-                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3.5">

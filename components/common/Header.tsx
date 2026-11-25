@@ -96,7 +96,7 @@ export function Header() {
       }}
       className="fixed top-0 inset-x-0 z-40 w-full border-b border-[#E8E2CC] dark:border-zinc-800 bg-[#FFFDF2]/95 dark:bg-[#0B0B0C]/95 backdrop-blur-md transition-colors"
     >
-      <div className="h-1 w-full bg-gradient-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
+      <div className="h-1 w-full bg-linear-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">

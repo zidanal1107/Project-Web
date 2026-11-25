@@ -14,7 +14,7 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden border-t border-[#E8E2CC] dark:border-zinc-800 bg-[#FFFDF2] dark:bg-[#0B0B0C] text-zinc-700 dark:text-zinc-300 text-sm transition-colors">
-      <div className="h-1 w-full bg-gradient-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
+      <div className="h-1 w-full bg-linear-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-[#E8E2CC] dark:border-zinc-800">

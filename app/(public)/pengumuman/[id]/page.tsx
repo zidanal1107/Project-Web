@@ -126,7 +126,7 @@ export default function AnnouncementDetailPage() {
       className="relative min-h-screen bg-[#FFFDF2] dark:bg-[#0B0B0C] text-zinc-900 dark:text-white transition-colors"
     >
       <div className="fixed inset-x-0 top-0 z-50 h-1 bg-transparent pointer-events-none">
-        <div className="gsap-read-progress h-full w-full origin-left scale-x-0 bg-gradient-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
+        <div className="gsap-read-progress h-full w-full origin-left scale-x-0 bg-linear-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
       </div>
 
       <article className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
@@ -227,7 +227,7 @@ export default function AnnouncementDetailPage() {
           animate="visible"
           className="gsap-article-body relative overflow-hidden bg-white dark:bg-zinc-900/90 border border-[#E8E2CC] dark:border-zinc-800 shadow-xs p-6 sm:p-10 rounded-xl text-zinc-800 dark:text-zinc-200 leading-relaxed text-base sm:text-[17px] whitespace-pre-line"
         >
-          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
+          <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]" />
           {announcement.content}
         </motion.div>
       </article>

@@ -120,8 +120,8 @@ export default function EventsPage() {
                       isOngoing
                         ? "bg-emerald-600 dark:bg-emerald-500"
                         : isUpcoming
-                        ? "bg-gradient-to-r from-[#B45309] to-[#FACC15]"
-                        : "bg-gradient-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]"
+                        ? "bg-linear-to-r from-[#B45309] to-[#FACC15]"
+                        : "bg-linear-to-r from-[#7F1D1D] via-[#991B1B] to-[#FACC15]"
                     }`}
                   />
 
