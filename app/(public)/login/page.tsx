@@ -26,7 +26,7 @@ export default function LoginPage() {
       {/* Modern Gradient Glowing Border Card (Linear / Vercel Aesthetic) */}
       <div className="portal-glow-border max-w-sm w-full transition-all">
         <div className="bg-white dark:bg-[#0c0c0e]/95 backdrop-blur-xl p-7 sm:p-8 rounded-[1.2rem] space-y-6">
-          
+
           {/* Header with Red-Yellow Gradient Badge */}
           <div className="text-center space-y-2">
             <div className="w-10 h-10 bg-gradient-imm text-white rounded-xl mx-auto flex items-center justify-center font-bold text-sm shadow-md shadow-red-500/20">

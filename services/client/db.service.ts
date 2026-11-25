@@ -454,6 +454,7 @@ export const db = {
     full_name: string;
     email: string;
     phone: string;
+    details?: Record<string, unknown>;
   }): Promise<MemberApplication> {
     const result = await sendData<RawApplication>('post', '/member-applications', {
       full_name: payload.full_name,

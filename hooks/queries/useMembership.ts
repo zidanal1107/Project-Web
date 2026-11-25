@@ -35,8 +35,12 @@ export function useMembers(params: { search?: string } = {}) {
 export function useSubmitApplication() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (payload: { full_name: string; email: string; phone: string }) =>
-      db.submitMemberApplication(payload),
+    mutationFn: (payload: {
+      full_name: string;
+      email: string;
+      phone: string;
+      details?: Record<string, unknown>;
+    }) => db.submitMemberApplication(payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [APPLICATIONS_QUERY_KEY] });
       queryClient.invalidateQueries({ queryKey: [AUDIT_QUERY_KEY] });

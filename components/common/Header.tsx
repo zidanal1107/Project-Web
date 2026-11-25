@@ -4,7 +4,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Shield, LogOut, Sun, Moon } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/context/ThemeContext";
 
 export function Header() {
@@ -16,6 +17,7 @@ export function Header() {
   const isHoveredRef = useRef(false);
   const mobileMenuOpenRef = useRef(false);
 
+  const { isAuthenticated, logout } = useAuth();
   const { theme, toggleTheme, mounted } = useTheme();
   const pathname = usePathname();
 
@@ -33,7 +35,7 @@ export function Header() {
     return pathname.startsWith(path);
   };
 
-  // Fungsi memulai/mereset timer 3 detik
+  // Fungsi memulai/mereset timer 5 detik
   const startHideTimer = useCallback(() => {
     if (hideTimer.current) clearTimeout(hideTimer.current);
     hideTimer.current = setTimeout(() => {
@@ -52,6 +54,7 @@ export function Header() {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY < lastScrollY.current) {
+        // Halaman digeser ke atas -> tampilkan header & reset timer 5 detik
         setIsVisible(true);
         startHideTimer();
       }
@@ -128,11 +131,10 @@ export function Header() {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`relative px-4 py-2 rounded-lg text-sm lg:text-[15px] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#991B1B] ${
-                    active
-                      ? "text-[#991B1B] dark:text-[#FACC15] font-bold"
-                      : "text-zinc-700 dark:text-zinc-300 font-semibold hover:text-[#991B1B] dark:hover:text-white"
-                  }`}
+                  className={`relative px-4 py-2 rounded-lg text-sm lg:text-[15px] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#991B1B] ${active
+                    ? "text-[#991B1B] dark:text-[#FACC15] font-bold"
+                    : "text-zinc-700 dark:text-zinc-300 font-semibold hover:text-[#991B1B] dark:hover:text-white"
+                    }`}
                 >
                   {active && (
                     <motion.span
@@ -160,8 +162,8 @@ export function Header() {
                 !mounted
                   ? "Ganti Tema"
                   : theme === "dark"
-                  ? "Ganti ke Mode Terang"
-                  : "Ganti ke Mode Gelap"
+                    ? "Ganti ke Mode Terang"
+                    : "Ganti ke Mode Gelap"
               }
               className="p-2.5 rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-[#F5EFD6] dark:hover:bg-zinc-900 border border-transparent hover:border-[#E8E2CC] dark:hover:border-zinc-800 transition-colors cursor-pointer"
               aria-label="Toggle Theme"
@@ -174,6 +176,31 @@ export function Header() {
                 <Moon className="w-5 h-5 text-zinc-800" />
               )}
             </motion.button>
+
+            {mounted && isAuthenticated && (
+              <div className="flex items-center gap-2 pl-3 border-l border-[#E8E2CC] dark:border-zinc-800">
+                <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }}>
+                  <Link
+                    href="/admin"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-[#7F1D1D] hover:bg-[#991B1B] text-white shadow-sm transition-colors"
+                  >
+                    <Shield className="w-4 h-4 text-[#FACC15]" />
+                    Admin Panel
+                  </Link>
+                </motion.div>
+
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.94 }}
+                  onClick={logout}
+                  title="Keluar dari sesi admin"
+                  aria-label="Keluar"
+                  className="p-2.5 text-zinc-600 dark:text-zinc-400 hover:text-[#991B1B] hover:bg-[#F5EFD6] dark:hover:bg-zinc-900 rounded-lg transition-colors cursor-pointer"
+                >
+                  <LogOut className="w-5 h-5" />
+                </motion.button>
+              </div>
+            )}
           </div>
 
           <div className="flex md:hidden items-center gap-2">
@@ -222,16 +249,38 @@ export function Header() {
                     key={link.path}
                     href={link.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-lg text-base transition-colors ${
-                      active
-                        ? "bg-[#F5EFD6] dark:bg-zinc-900 text-[#991B1B] dark:text-[#FACC15] border border-[#E8E2CC] dark:border-zinc-800 font-bold"
-                        : "text-zinc-800 dark:text-zinc-200 font-semibold hover:bg-[#F5EFD6]/60 dark:hover:bg-zinc-900/60"
-                    }`}
+                    className={`block px-4 py-3 rounded-lg text-base transition-colors ${active
+                      ? "bg-[#F5EFD6] dark:bg-zinc-900 text-[#991B1B] dark:text-[#FACC15] border border-[#E8E2CC] dark:border-zinc-800 font-bold"
+                      : "text-zinc-800 dark:text-zinc-200 font-semibold hover:bg-[#F5EFD6]/60 dark:hover:bg-zinc-900/60"
+                      }`}
                   >
                     {link.label}
                   </Link>
                 );
               })}
+
+              {mounted && isAuthenticated && (
+                <div className="pt-3 mt-2 border-t border-[#E8E2CC] dark:border-zinc-800 flex items-center justify-between gap-2">
+                  <Link
+                    href="/admin"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-semibold bg-[#7F1D1D] text-white w-full justify-center shadow-sm"
+                  >
+                    <Shield className="w-5 h-5 text-[#FACC15]" />
+                    Admin Panel
+                  </Link>
+                  <button
+                    onClick={() => {
+                      logout();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="p-3 rounded-lg border border-[#E8E2CC] dark:border-zinc-800 bg-[#F5EFD6] dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:text-[#991B1B]"
+                    aria-label="Keluar"
+                  >
+                    <LogOut className="w-5 h-5" />
+                  </button>
+                </div>
+              )}
             </div>
           </motion.div>
         )}
