@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { db } from "@/services/client/db.service";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,10 +21,6 @@ import {
   Users,
   ArrowUpRight,
 } from "lucide-react";
-import { useAnnouncements } from "@/hooks/queries/useAnnouncements";
-import { useEvents } from "@/hooks/queries/useEvents";
-import { useOrganization, useDepartments } from "@/hooks/queries/useOrg";
-import { useMembers } from "@/hooks/queries/useMembership";
 import { SkeletonLoader } from "@/components/feedback/SkeletonLoader";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -50,19 +48,35 @@ const cardItemVariants: Variants = {
 export default function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const { data: org } = useOrganization();
-  const { data: departments } = useDepartments();
-  const { data: announcements, isLoading: isAnnLoading } = useAnnouncements({
-    status: "PUBLISHED",
+  const { data: organization } = useQuery({
+    queryKey: ["organization"],
+    queryFn: () => db.getOrganization(),
   });
-  const { data: events, isLoading: isEventsLoading } = useEvents();
-  const { data: members } = useMembers();
-  const URL_POTO = "http://localhost:3000/videos/Video_Profil.mp4";
+
+  const { data: departments = [] } = useQuery({
+    queryKey: ["departments"],
+    queryFn: () => db.getDepartments(),
+  });
+
+  const { data: announcements = [], isLoading: isAnnLoading } = useQuery({
+    queryKey: ["announcements"],
+    queryFn: () => db.getAnnouncements(),
+  });
+
+  const { data: events = [], isLoading: isEventsLoading } = useQuery({
+    queryKey: ["events"],
+    queryFn: () => db.getEvents(),
+  });
+
+  const { data: members = [] } = useQuery({
+    queryKey: ["members"],
+    queryFn: () => db.getMembers(),
+  });
 
   // 1. Lenis Smooth Scrolling + GSAP ScrollTrigger Sync
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
+      "(prefers-reduced-motion: reduce)"
     ).matches;
 
     if (prefersReducedMotion) return;
@@ -91,7 +105,7 @@ export default function HomePage() {
   // 2. GSAP Hero Reveal & ScrollTrigger untuk Section Headers
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
+      "(prefers-reduced-motion: reduce)"
     ).matches;
 
     if (prefersReducedMotion) return;
@@ -197,11 +211,11 @@ export default function HomePage() {
               id="hero-heading"
               className="gsap-hero-reveal text-3xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight leading-[1.12] max-w-4xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.75)]"
             >
-              {org?.name || "Ikatan Mahasiswa Muhammadiyah"}
+              {organization?.name || "Ikatan Mahasiswa Muhammadiyah"}
             </h1>
 
             <p className="gsap-hero-reveal mt-5 text-base sm:text-lg text-zinc-100 max-w-2xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)]">
-              {org?.description ||
+              {organization?.description ||
                 "Pusat informasi resmi, surat edaran pimpinan, agenda perkaderan, dan transparansi tata kelola Ikatan Mahasiswa Muhammadiyah Kota Malang."}
             </p>
 
@@ -347,7 +361,7 @@ export default function HomePage() {
                       >
                         {featuredAnnouncement.published_at
                           ? new Date(
-                              featuredAnnouncement.published_at,
+                              featuredAnnouncement.published_at
                             ).toLocaleDateString("id-ID", {
                               day: "numeric",
                               month: "long",
@@ -411,7 +425,7 @@ export default function HomePage() {
                                 day: "numeric",
                                 month: "short",
                                 year: "numeric",
-                              },
+                              }
                             )
                           : "Draft"}
                       </time>

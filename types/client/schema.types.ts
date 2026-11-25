@@ -3,8 +3,8 @@ export interface Organization {
   organization_id: number;
   name: string;
   description: string;
-  vision: string;
-  mission: string;
+  vision: string | null;
+  mission: string | null;
   email: string;
   logo_url: string;
 }
@@ -14,7 +14,7 @@ export interface Department {
   department_id: number;
   organization_id: number;
   name: string;
-  description: string;
+  description: string | null;
   contact_email: string;
 }
 
