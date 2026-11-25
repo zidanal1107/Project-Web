@@ -43,6 +43,24 @@ export type MemberAppMinAggregateOutputType = {
   Full_Name: string | null
   Email: string | null
   Phone_Number: string | null
+  Tempat_lahir: string | null
+  Tanggal_lahir: Date | null
+  Jenis_kelamin: string | null
+  Agama: string | null
+  Jurusan: string | null
+  Angkatan: string | null
+  Akun_ig: string | null
+  Hobi: string | null
+  Alamat_asal: string | null
+  Alamat_malang: string | null
+  Riwayat_pendidikan: string | null
+  Pengalaman_organisasi: string | null
+  Riwayat_penyakit: string | null
+  Minat_bakat: string | null
+  Motivasi: string | null
+  Sumber_informasi: string | null
+  Siap_kader: boolean | null
+  Foto_baju_url: string | null
   Submitted_at: Date | null
   Status: string | null
   Organization_Organization_id: bigint | null
@@ -55,6 +73,24 @@ export type MemberAppMaxAggregateOutputType = {
   Full_Name: string | null
   Email: string | null
   Phone_Number: string | null
+  Tempat_lahir: string | null
+  Tanggal_lahir: Date | null
+  Jenis_kelamin: string | null
+  Agama: string | null
+  Jurusan: string | null
+  Angkatan: string | null
+  Akun_ig: string | null
+  Hobi: string | null
+  Alamat_asal: string | null
+  Alamat_malang: string | null
+  Riwayat_pendidikan: string | null
+  Pengalaman_organisasi: string | null
+  Riwayat_penyakit: string | null
+  Minat_bakat: string | null
+  Motivasi: string | null
+  Sumber_informasi: string | null
+  Siap_kader: boolean | null
+  Foto_baju_url: string | null
   Submitted_at: Date | null
   Status: string | null
   Organization_Organization_id: bigint | null
@@ -67,6 +103,24 @@ export type MemberAppCountAggregateOutputType = {
   Full_Name: number
   Email: number
   Phone_Number: number
+  Tempat_lahir: number
+  Tanggal_lahir: number
+  Jenis_kelamin: number
+  Agama: number
+  Jurusan: number
+  Angkatan: number
+  Akun_ig: number
+  Hobi: number
+  Alamat_asal: number
+  Alamat_malang: number
+  Riwayat_pendidikan: number
+  Pengalaman_organisasi: number
+  Riwayat_penyakit: number
+  Minat_bakat: number
+  Motivasi: number
+  Sumber_informasi: number
+  Siap_kader: number
+  Foto_baju_url: number
   Submitted_at: number
   Status: number
   Organization_Organization_id: number
@@ -93,6 +147,24 @@ export type MemberAppMinAggregateInputType = {
   Full_Name?: true
   Email?: true
   Phone_Number?: true
+  Tempat_lahir?: true
+  Tanggal_lahir?: true
+  Jenis_kelamin?: true
+  Agama?: true
+  Jurusan?: true
+  Angkatan?: true
+  Akun_ig?: true
+  Hobi?: true
+  Alamat_asal?: true
+  Alamat_malang?: true
+  Riwayat_pendidikan?: true
+  Pengalaman_organisasi?: true
+  Riwayat_penyakit?: true
+  Minat_bakat?: true
+  Motivasi?: true
+  Sumber_informasi?: true
+  Siap_kader?: true
+  Foto_baju_url?: true
   Submitted_at?: true
   Status?: true
   Organization_Organization_id?: true
@@ -105,6 +177,24 @@ export type MemberAppMaxAggregateInputType = {
   Full_Name?: true
   Email?: true
   Phone_Number?: true
+  Tempat_lahir?: true
+  Tanggal_lahir?: true
+  Jenis_kelamin?: true
+  Agama?: true
+  Jurusan?: true
+  Angkatan?: true
+  Akun_ig?: true
+  Hobi?: true
+  Alamat_asal?: true
+  Alamat_malang?: true
+  Riwayat_pendidikan?: true
+  Pengalaman_organisasi?: true
+  Riwayat_penyakit?: true
+  Minat_bakat?: true
+  Motivasi?: true
+  Sumber_informasi?: true
+  Siap_kader?: true
+  Foto_baju_url?: true
   Submitted_at?: true
   Status?: true
   Organization_Organization_id?: true
@@ -117,6 +207,24 @@ export type MemberAppCountAggregateInputType = {
   Full_Name?: true
   Email?: true
   Phone_Number?: true
+  Tempat_lahir?: true
+  Tanggal_lahir?: true
+  Jenis_kelamin?: true
+  Agama?: true
+  Jurusan?: true
+  Angkatan?: true
+  Akun_ig?: true
+  Hobi?: true
+  Alamat_asal?: true
+  Alamat_malang?: true
+  Riwayat_pendidikan?: true
+  Pengalaman_organisasi?: true
+  Riwayat_penyakit?: true
+  Minat_bakat?: true
+  Motivasi?: true
+  Sumber_informasi?: true
+  Siap_kader?: true
+  Foto_baju_url?: true
   Submitted_at?: true
   Status?: true
   Organization_Organization_id?: true
@@ -216,6 +324,24 @@ export type MemberAppGroupByOutputType = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir: string | null
+  Tanggal_lahir: Date | null
+  Jenis_kelamin: string | null
+  Agama: string | null
+  Jurusan: string | null
+  Angkatan: string | null
+  Akun_ig: string | null
+  Hobi: string | null
+  Alamat_asal: string | null
+  Alamat_malang: string | null
+  Riwayat_pendidikan: string | null
+  Pengalaman_organisasi: string | null
+  Riwayat_penyakit: string | null
+  Minat_bakat: string | null
+  Motivasi: string | null
+  Sumber_informasi: string | null
+  Siap_kader: boolean | null
+  Foto_baju_url: string | null
   Submitted_at: Date
   Status: string
   Organization_Organization_id: bigint
@@ -251,6 +377,24 @@ export type MemberAppWhereInput = {
   Full_Name?: Prisma.StringFilter<"MemberApp"> | string
   Email?: Prisma.StringFilter<"MemberApp"> | string
   Phone_Number?: Prisma.StringFilter<"MemberApp"> | string
+  Tempat_lahir?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Tanggal_lahir?: Prisma.DateTimeNullableFilter<"MemberApp"> | Date | string | null
+  Jenis_kelamin?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Agama?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Jurusan?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Angkatan?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Akun_ig?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Hobi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Alamat_asal?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Alamat_malang?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Riwayat_pendidikan?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Pengalaman_organisasi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Riwayat_penyakit?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Minat_bakat?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Motivasi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Sumber_informasi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Siap_kader?: Prisma.BoolNullableFilter<"MemberApp"> | boolean | null
+  Foto_baju_url?: Prisma.StringNullableFilter<"MemberApp"> | string | null
   Submitted_at?: Prisma.DateTimeFilter<"MemberApp"> | Date | string
   Status?: Prisma.StringFilter<"MemberApp"> | string
   Organization_Organization_id?: Prisma.BigIntFilter<"MemberApp"> | bigint | number
@@ -266,6 +410,24 @@ export type MemberAppOrderByWithRelationInput = {
   Full_Name?: Prisma.SortOrder
   Email?: Prisma.SortOrder
   Phone_Number?: Prisma.SortOrder
+  Tempat_lahir?: Prisma.SortOrderInput | Prisma.SortOrder
+  Tanggal_lahir?: Prisma.SortOrderInput | Prisma.SortOrder
+  Jenis_kelamin?: Prisma.SortOrderInput | Prisma.SortOrder
+  Agama?: Prisma.SortOrderInput | Prisma.SortOrder
+  Jurusan?: Prisma.SortOrderInput | Prisma.SortOrder
+  Angkatan?: Prisma.SortOrderInput | Prisma.SortOrder
+  Akun_ig?: Prisma.SortOrderInput | Prisma.SortOrder
+  Hobi?: Prisma.SortOrderInput | Prisma.SortOrder
+  Alamat_asal?: Prisma.SortOrderInput | Prisma.SortOrder
+  Alamat_malang?: Prisma.SortOrderInput | Prisma.SortOrder
+  Riwayat_pendidikan?: Prisma.SortOrderInput | Prisma.SortOrder
+  Pengalaman_organisasi?: Prisma.SortOrderInput | Prisma.SortOrder
+  Riwayat_penyakit?: Prisma.SortOrderInput | Prisma.SortOrder
+  Minat_bakat?: Prisma.SortOrderInput | Prisma.SortOrder
+  Motivasi?: Prisma.SortOrderInput | Prisma.SortOrder
+  Sumber_informasi?: Prisma.SortOrderInput | Prisma.SortOrder
+  Siap_kader?: Prisma.SortOrderInput | Prisma.SortOrder
+  Foto_baju_url?: Prisma.SortOrderInput | Prisma.SortOrder
   Submitted_at?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Organization_Organization_id?: Prisma.SortOrder
@@ -286,6 +448,24 @@ export type MemberAppWhereUniqueInput = Prisma.AtLeast<{
   Full_Name?: Prisma.StringFilter<"MemberApp"> | string
   Email?: Prisma.StringFilter<"MemberApp"> | string
   Phone_Number?: Prisma.StringFilter<"MemberApp"> | string
+  Tempat_lahir?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Tanggal_lahir?: Prisma.DateTimeNullableFilter<"MemberApp"> | Date | string | null
+  Jenis_kelamin?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Agama?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Jurusan?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Angkatan?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Akun_ig?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Hobi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Alamat_asal?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Alamat_malang?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Riwayat_pendidikan?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Pengalaman_organisasi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Riwayat_penyakit?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Minat_bakat?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Motivasi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Sumber_informasi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Siap_kader?: Prisma.BoolNullableFilter<"MemberApp"> | boolean | null
+  Foto_baju_url?: Prisma.StringNullableFilter<"MemberApp"> | string | null
   Submitted_at?: Prisma.DateTimeFilter<"MemberApp"> | Date | string
   Status?: Prisma.StringFilter<"MemberApp"> | string
   Organization_Organization_id?: Prisma.BigIntFilter<"MemberApp"> | bigint | number
@@ -301,6 +481,24 @@ export type MemberAppOrderByWithAggregationInput = {
   Full_Name?: Prisma.SortOrder
   Email?: Prisma.SortOrder
   Phone_Number?: Prisma.SortOrder
+  Tempat_lahir?: Prisma.SortOrderInput | Prisma.SortOrder
+  Tanggal_lahir?: Prisma.SortOrderInput | Prisma.SortOrder
+  Jenis_kelamin?: Prisma.SortOrderInput | Prisma.SortOrder
+  Agama?: Prisma.SortOrderInput | Prisma.SortOrder
+  Jurusan?: Prisma.SortOrderInput | Prisma.SortOrder
+  Angkatan?: Prisma.SortOrderInput | Prisma.SortOrder
+  Akun_ig?: Prisma.SortOrderInput | Prisma.SortOrder
+  Hobi?: Prisma.SortOrderInput | Prisma.SortOrder
+  Alamat_asal?: Prisma.SortOrderInput | Prisma.SortOrder
+  Alamat_malang?: Prisma.SortOrderInput | Prisma.SortOrder
+  Riwayat_pendidikan?: Prisma.SortOrderInput | Prisma.SortOrder
+  Pengalaman_organisasi?: Prisma.SortOrderInput | Prisma.SortOrder
+  Riwayat_penyakit?: Prisma.SortOrderInput | Prisma.SortOrder
+  Minat_bakat?: Prisma.SortOrderInput | Prisma.SortOrder
+  Motivasi?: Prisma.SortOrderInput | Prisma.SortOrder
+  Sumber_informasi?: Prisma.SortOrderInput | Prisma.SortOrder
+  Siap_kader?: Prisma.SortOrderInput | Prisma.SortOrder
+  Foto_baju_url?: Prisma.SortOrderInput | Prisma.SortOrder
   Submitted_at?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Organization_Organization_id?: Prisma.SortOrder
@@ -321,6 +519,24 @@ export type MemberAppScalarWhereWithAggregatesInput = {
   Full_Name?: Prisma.StringWithAggregatesFilter<"MemberApp"> | string
   Email?: Prisma.StringWithAggregatesFilter<"MemberApp"> | string
   Phone_Number?: Prisma.StringWithAggregatesFilter<"MemberApp"> | string
+  Tempat_lahir?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Tanggal_lahir?: Prisma.DateTimeNullableWithAggregatesFilter<"MemberApp"> | Date | string | null
+  Jenis_kelamin?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Agama?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Jurusan?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Angkatan?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Akun_ig?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Hobi?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Alamat_asal?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Alamat_malang?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Riwayat_pendidikan?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Pengalaman_organisasi?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Riwayat_penyakit?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Minat_bakat?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Motivasi?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Sumber_informasi?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
+  Siap_kader?: Prisma.BoolNullableWithAggregatesFilter<"MemberApp"> | boolean | null
+  Foto_baju_url?: Prisma.StringNullableWithAggregatesFilter<"MemberApp"> | string | null
   Submitted_at?: Prisma.DateTimeWithAggregatesFilter<"MemberApp"> | Date | string
   Status?: Prisma.StringWithAggregatesFilter<"MemberApp"> | string
   Organization_Organization_id?: Prisma.BigIntWithAggregatesFilter<"MemberApp"> | bigint | number
@@ -333,6 +549,24 @@ export type MemberAppCreateInput = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir?: string | null
+  Tanggal_lahir?: Date | string | null
+  Jenis_kelamin?: string | null
+  Agama?: string | null
+  Jurusan?: string | null
+  Angkatan?: string | null
+  Akun_ig?: string | null
+  Hobi?: string | null
+  Alamat_asal?: string | null
+  Alamat_malang?: string | null
+  Riwayat_pendidikan?: string | null
+  Pengalaman_organisasi?: string | null
+  Riwayat_penyakit?: string | null
+  Minat_bakat?: string | null
+  Motivasi?: string | null
+  Sumber_informasi?: string | null
+  Siap_kader?: boolean | null
+  Foto_baju_url?: string | null
   Submitted_at: Date | string
   Status: string
   Organization: Prisma.OrganizationCreateNestedOneWithoutMember_appsInput
@@ -345,6 +579,24 @@ export type MemberAppUncheckedCreateInput = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir?: string | null
+  Tanggal_lahir?: Date | string | null
+  Jenis_kelamin?: string | null
+  Agama?: string | null
+  Jurusan?: string | null
+  Angkatan?: string | null
+  Akun_ig?: string | null
+  Hobi?: string | null
+  Alamat_asal?: string | null
+  Alamat_malang?: string | null
+  Riwayat_pendidikan?: string | null
+  Pengalaman_organisasi?: string | null
+  Riwayat_penyakit?: string | null
+  Minat_bakat?: string | null
+  Motivasi?: string | null
+  Sumber_informasi?: string | null
+  Siap_kader?: boolean | null
+  Foto_baju_url?: string | null
   Submitted_at: Date | string
   Status: string
   Organization_Organization_id: bigint | number
@@ -358,6 +610,24 @@ export type MemberAppUpdateInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Organization?: Prisma.OrganizationUpdateOneRequiredWithoutMember_appsNestedInput
@@ -370,6 +640,24 @@ export type MemberAppUncheckedUpdateInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Organization_Organization_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -383,6 +671,24 @@ export type MemberAppCreateManyInput = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir?: string | null
+  Tanggal_lahir?: Date | string | null
+  Jenis_kelamin?: string | null
+  Agama?: string | null
+  Jurusan?: string | null
+  Angkatan?: string | null
+  Akun_ig?: string | null
+  Hobi?: string | null
+  Alamat_asal?: string | null
+  Alamat_malang?: string | null
+  Riwayat_pendidikan?: string | null
+  Pengalaman_organisasi?: string | null
+  Riwayat_penyakit?: string | null
+  Minat_bakat?: string | null
+  Motivasi?: string | null
+  Sumber_informasi?: string | null
+  Siap_kader?: boolean | null
+  Foto_baju_url?: string | null
   Submitted_at: Date | string
   Status: string
   Organization_Organization_id: bigint | number
@@ -395,6 +701,24 @@ export type MemberAppUpdateManyMutationInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -404,6 +728,24 @@ export type MemberAppUncheckedUpdateManyInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Organization_Organization_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -442,6 +784,24 @@ export type MemberAppCountOrderByAggregateInput = {
   Full_Name?: Prisma.SortOrder
   Email?: Prisma.SortOrder
   Phone_Number?: Prisma.SortOrder
+  Tempat_lahir?: Prisma.SortOrder
+  Tanggal_lahir?: Prisma.SortOrder
+  Jenis_kelamin?: Prisma.SortOrder
+  Agama?: Prisma.SortOrder
+  Jurusan?: Prisma.SortOrder
+  Angkatan?: Prisma.SortOrder
+  Akun_ig?: Prisma.SortOrder
+  Hobi?: Prisma.SortOrder
+  Alamat_asal?: Prisma.SortOrder
+  Alamat_malang?: Prisma.SortOrder
+  Riwayat_pendidikan?: Prisma.SortOrder
+  Pengalaman_organisasi?: Prisma.SortOrder
+  Riwayat_penyakit?: Prisma.SortOrder
+  Minat_bakat?: Prisma.SortOrder
+  Motivasi?: Prisma.SortOrder
+  Sumber_informasi?: Prisma.SortOrder
+  Siap_kader?: Prisma.SortOrder
+  Foto_baju_url?: Prisma.SortOrder
   Submitted_at?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Organization_Organization_id?: Prisma.SortOrder
@@ -460,6 +820,24 @@ export type MemberAppMaxOrderByAggregateInput = {
   Full_Name?: Prisma.SortOrder
   Email?: Prisma.SortOrder
   Phone_Number?: Prisma.SortOrder
+  Tempat_lahir?: Prisma.SortOrder
+  Tanggal_lahir?: Prisma.SortOrder
+  Jenis_kelamin?: Prisma.SortOrder
+  Agama?: Prisma.SortOrder
+  Jurusan?: Prisma.SortOrder
+  Angkatan?: Prisma.SortOrder
+  Akun_ig?: Prisma.SortOrder
+  Hobi?: Prisma.SortOrder
+  Alamat_asal?: Prisma.SortOrder
+  Alamat_malang?: Prisma.SortOrder
+  Riwayat_pendidikan?: Prisma.SortOrder
+  Pengalaman_organisasi?: Prisma.SortOrder
+  Riwayat_penyakit?: Prisma.SortOrder
+  Minat_bakat?: Prisma.SortOrder
+  Motivasi?: Prisma.SortOrder
+  Sumber_informasi?: Prisma.SortOrder
+  Siap_kader?: Prisma.SortOrder
+  Foto_baju_url?: Prisma.SortOrder
   Submitted_at?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Organization_Organization_id?: Prisma.SortOrder
@@ -472,6 +850,24 @@ export type MemberAppMinOrderByAggregateInput = {
   Full_Name?: Prisma.SortOrder
   Email?: Prisma.SortOrder
   Phone_Number?: Prisma.SortOrder
+  Tempat_lahir?: Prisma.SortOrder
+  Tanggal_lahir?: Prisma.SortOrder
+  Jenis_kelamin?: Prisma.SortOrder
+  Agama?: Prisma.SortOrder
+  Jurusan?: Prisma.SortOrder
+  Angkatan?: Prisma.SortOrder
+  Akun_ig?: Prisma.SortOrder
+  Hobi?: Prisma.SortOrder
+  Alamat_asal?: Prisma.SortOrder
+  Alamat_malang?: Prisma.SortOrder
+  Riwayat_pendidikan?: Prisma.SortOrder
+  Pengalaman_organisasi?: Prisma.SortOrder
+  Riwayat_penyakit?: Prisma.SortOrder
+  Minat_bakat?: Prisma.SortOrder
+  Motivasi?: Prisma.SortOrder
+  Sumber_informasi?: Prisma.SortOrder
+  Siap_kader?: Prisma.SortOrder
+  Foto_baju_url?: Prisma.SortOrder
   Submitted_at?: Prisma.SortOrder
   Status?: Prisma.SortOrder
   Organization_Organization_id?: Prisma.SortOrder
@@ -541,6 +937,10 @@ export type MemberAppUpdateOneRequiredWithoutMemberNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MemberAppUpdateToOneWithWhereWithoutMemberInput, Prisma.MemberAppUpdateWithoutMemberInput>, Prisma.MemberAppUncheckedUpdateWithoutMemberInput>
 }
 
+export type NullableBoolFieldUpdateOperationsInput = {
+  set?: boolean | null
+}
+
 export type MemberAppCreateNestedManyWithoutOrganizationInput = {
   create?: Prisma.XOR<Prisma.MemberAppCreateWithoutOrganizationInput, Prisma.MemberAppUncheckedCreateWithoutOrganizationInput> | Prisma.MemberAppCreateWithoutOrganizationInput[] | Prisma.MemberAppUncheckedCreateWithoutOrganizationInput[]
   connectOrCreate?: Prisma.MemberAppCreateOrConnectWithoutOrganizationInput | Prisma.MemberAppCreateOrConnectWithoutOrganizationInput[]
@@ -588,6 +988,24 @@ export type MemberAppCreateWithoutAdminUserInput = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir?: string | null
+  Tanggal_lahir?: Date | string | null
+  Jenis_kelamin?: string | null
+  Agama?: string | null
+  Jurusan?: string | null
+  Angkatan?: string | null
+  Akun_ig?: string | null
+  Hobi?: string | null
+  Alamat_asal?: string | null
+  Alamat_malang?: string | null
+  Riwayat_pendidikan?: string | null
+  Pengalaman_organisasi?: string | null
+  Riwayat_penyakit?: string | null
+  Minat_bakat?: string | null
+  Motivasi?: string | null
+  Sumber_informasi?: string | null
+  Siap_kader?: boolean | null
+  Foto_baju_url?: string | null
   Submitted_at: Date | string
   Status: string
   Organization: Prisma.OrganizationCreateNestedOneWithoutMember_appsInput
@@ -599,6 +1017,24 @@ export type MemberAppUncheckedCreateWithoutAdminUserInput = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir?: string | null
+  Tanggal_lahir?: Date | string | null
+  Jenis_kelamin?: string | null
+  Agama?: string | null
+  Jurusan?: string | null
+  Angkatan?: string | null
+  Akun_ig?: string | null
+  Hobi?: string | null
+  Alamat_asal?: string | null
+  Alamat_malang?: string | null
+  Riwayat_pendidikan?: string | null
+  Pengalaman_organisasi?: string | null
+  Riwayat_penyakit?: string | null
+  Minat_bakat?: string | null
+  Motivasi?: string | null
+  Sumber_informasi?: string | null
+  Siap_kader?: boolean | null
+  Foto_baju_url?: string | null
   Submitted_at: Date | string
   Status: string
   Organization_Organization_id: bigint | number
@@ -639,6 +1075,24 @@ export type MemberAppScalarWhereInput = {
   Full_Name?: Prisma.StringFilter<"MemberApp"> | string
   Email?: Prisma.StringFilter<"MemberApp"> | string
   Phone_Number?: Prisma.StringFilter<"MemberApp"> | string
+  Tempat_lahir?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Tanggal_lahir?: Prisma.DateTimeNullableFilter<"MemberApp"> | Date | string | null
+  Jenis_kelamin?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Agama?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Jurusan?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Angkatan?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Akun_ig?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Hobi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Alamat_asal?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Alamat_malang?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Riwayat_pendidikan?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Pengalaman_organisasi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Riwayat_penyakit?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Minat_bakat?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Motivasi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Sumber_informasi?: Prisma.StringNullableFilter<"MemberApp"> | string | null
+  Siap_kader?: Prisma.BoolNullableFilter<"MemberApp"> | boolean | null
+  Foto_baju_url?: Prisma.StringNullableFilter<"MemberApp"> | string | null
   Submitted_at?: Prisma.DateTimeFilter<"MemberApp"> | Date | string
   Status?: Prisma.StringFilter<"MemberApp"> | string
   Organization_Organization_id?: Prisma.BigIntFilter<"MemberApp"> | bigint | number
@@ -651,6 +1105,24 @@ export type MemberAppCreateWithoutMemberInput = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir?: string | null
+  Tanggal_lahir?: Date | string | null
+  Jenis_kelamin?: string | null
+  Agama?: string | null
+  Jurusan?: string | null
+  Angkatan?: string | null
+  Akun_ig?: string | null
+  Hobi?: string | null
+  Alamat_asal?: string | null
+  Alamat_malang?: string | null
+  Riwayat_pendidikan?: string | null
+  Pengalaman_organisasi?: string | null
+  Riwayat_penyakit?: string | null
+  Minat_bakat?: string | null
+  Motivasi?: string | null
+  Sumber_informasi?: string | null
+  Siap_kader?: boolean | null
+  Foto_baju_url?: string | null
   Submitted_at: Date | string
   Status: string
   Organization: Prisma.OrganizationCreateNestedOneWithoutMember_appsInput
@@ -662,6 +1134,24 @@ export type MemberAppUncheckedCreateWithoutMemberInput = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir?: string | null
+  Tanggal_lahir?: Date | string | null
+  Jenis_kelamin?: string | null
+  Agama?: string | null
+  Jurusan?: string | null
+  Angkatan?: string | null
+  Akun_ig?: string | null
+  Hobi?: string | null
+  Alamat_asal?: string | null
+  Alamat_malang?: string | null
+  Riwayat_pendidikan?: string | null
+  Pengalaman_organisasi?: string | null
+  Riwayat_penyakit?: string | null
+  Minat_bakat?: string | null
+  Motivasi?: string | null
+  Sumber_informasi?: string | null
+  Siap_kader?: boolean | null
+  Foto_baju_url?: string | null
   Submitted_at: Date | string
   Status: string
   Organization_Organization_id: bigint | number
@@ -690,6 +1180,24 @@ export type MemberAppUpdateWithoutMemberInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Organization?: Prisma.OrganizationUpdateOneRequiredWithoutMember_appsNestedInput
@@ -701,6 +1209,24 @@ export type MemberAppUncheckedUpdateWithoutMemberInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Organization_Organization_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -713,6 +1239,24 @@ export type MemberAppCreateWithoutOrganizationInput = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir?: string | null
+  Tanggal_lahir?: Date | string | null
+  Jenis_kelamin?: string | null
+  Agama?: string | null
+  Jurusan?: string | null
+  Angkatan?: string | null
+  Akun_ig?: string | null
+  Hobi?: string | null
+  Alamat_asal?: string | null
+  Alamat_malang?: string | null
+  Riwayat_pendidikan?: string | null
+  Pengalaman_organisasi?: string | null
+  Riwayat_penyakit?: string | null
+  Minat_bakat?: string | null
+  Motivasi?: string | null
+  Sumber_informasi?: string | null
+  Siap_kader?: boolean | null
+  Foto_baju_url?: string | null
   Submitted_at: Date | string
   Status: string
   AdminUser: Prisma.AdminUserCreateNestedOneWithoutMember_appsInput
@@ -724,6 +1268,24 @@ export type MemberAppUncheckedCreateWithoutOrganizationInput = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir?: string | null
+  Tanggal_lahir?: Date | string | null
+  Jenis_kelamin?: string | null
+  Agama?: string | null
+  Jurusan?: string | null
+  Angkatan?: string | null
+  Akun_ig?: string | null
+  Hobi?: string | null
+  Alamat_asal?: string | null
+  Alamat_malang?: string | null
+  Riwayat_pendidikan?: string | null
+  Pengalaman_organisasi?: string | null
+  Riwayat_penyakit?: string | null
+  Minat_bakat?: string | null
+  Motivasi?: string | null
+  Sumber_informasi?: string | null
+  Siap_kader?: boolean | null
+  Foto_baju_url?: string | null
   Submitted_at: Date | string
   Status: string
   Admin_user_Admin_id: bigint | number
@@ -762,6 +1324,24 @@ export type MemberAppCreateManyAdminUserInput = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir?: string | null
+  Tanggal_lahir?: Date | string | null
+  Jenis_kelamin?: string | null
+  Agama?: string | null
+  Jurusan?: string | null
+  Angkatan?: string | null
+  Akun_ig?: string | null
+  Hobi?: string | null
+  Alamat_asal?: string | null
+  Alamat_malang?: string | null
+  Riwayat_pendidikan?: string | null
+  Pengalaman_organisasi?: string | null
+  Riwayat_penyakit?: string | null
+  Minat_bakat?: string | null
+  Motivasi?: string | null
+  Sumber_informasi?: string | null
+  Siap_kader?: boolean | null
+  Foto_baju_url?: string | null
   Submitted_at: Date | string
   Status: string
   Organization_Organization_id: bigint | number
@@ -772,6 +1352,24 @@ export type MemberAppUpdateWithoutAdminUserInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Organization?: Prisma.OrganizationUpdateOneRequiredWithoutMember_appsNestedInput
@@ -783,6 +1381,24 @@ export type MemberAppUncheckedUpdateWithoutAdminUserInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Organization_Organization_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -794,6 +1410,24 @@ export type MemberAppUncheckedUpdateManyWithoutAdminUserInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Organization_Organization_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -804,6 +1438,24 @@ export type MemberAppCreateManyOrganizationInput = {
   Full_Name: string
   Email: string
   Phone_Number: string
+  Tempat_lahir?: string | null
+  Tanggal_lahir?: Date | string | null
+  Jenis_kelamin?: string | null
+  Agama?: string | null
+  Jurusan?: string | null
+  Angkatan?: string | null
+  Akun_ig?: string | null
+  Hobi?: string | null
+  Alamat_asal?: string | null
+  Alamat_malang?: string | null
+  Riwayat_pendidikan?: string | null
+  Pengalaman_organisasi?: string | null
+  Riwayat_penyakit?: string | null
+  Minat_bakat?: string | null
+  Motivasi?: string | null
+  Sumber_informasi?: string | null
+  Siap_kader?: boolean | null
+  Foto_baju_url?: string | null
   Submitted_at: Date | string
   Status: string
   Admin_user_Admin_id: bigint | number
@@ -815,6 +1467,24 @@ export type MemberAppUpdateWithoutOrganizationInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   AdminUser?: Prisma.AdminUserUpdateOneRequiredWithoutMember_appsNestedInput
@@ -826,6 +1496,24 @@ export type MemberAppUncheckedUpdateWithoutOrganizationInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Admin_user_Admin_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -838,6 +1526,24 @@ export type MemberAppUncheckedUpdateManyWithoutOrganizationInput = {
   Full_Name?: Prisma.StringFieldUpdateOperationsInput | string
   Email?: Prisma.StringFieldUpdateOperationsInput | string
   Phone_Number?: Prisma.StringFieldUpdateOperationsInput | string
+  Tempat_lahir?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Tanggal_lahir?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  Jenis_kelamin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Agama?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Jurusan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Angkatan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Akun_ig?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Hobi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_asal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Alamat_malang?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_pendidikan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Pengalaman_organisasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Riwayat_penyakit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Minat_bakat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Motivasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Sumber_informasi?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  Siap_kader?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  Foto_baju_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Submitted_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   Status?: Prisma.StringFieldUpdateOperationsInput | string
   Admin_user_Admin_id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -851,6 +1557,24 @@ export type MemberAppSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   Full_Name?: boolean
   Email?: boolean
   Phone_Number?: boolean
+  Tempat_lahir?: boolean
+  Tanggal_lahir?: boolean
+  Jenis_kelamin?: boolean
+  Agama?: boolean
+  Jurusan?: boolean
+  Angkatan?: boolean
+  Akun_ig?: boolean
+  Hobi?: boolean
+  Alamat_asal?: boolean
+  Alamat_malang?: boolean
+  Riwayat_pendidikan?: boolean
+  Pengalaman_organisasi?: boolean
+  Riwayat_penyakit?: boolean
+  Minat_bakat?: boolean
+  Motivasi?: boolean
+  Sumber_informasi?: boolean
+  Siap_kader?: boolean
+  Foto_baju_url?: boolean
   Submitted_at?: boolean
   Status?: boolean
   Organization_Organization_id?: boolean
@@ -868,6 +1592,24 @@ export type MemberAppSelectScalar = {
   Full_Name?: boolean
   Email?: boolean
   Phone_Number?: boolean
+  Tempat_lahir?: boolean
+  Tanggal_lahir?: boolean
+  Jenis_kelamin?: boolean
+  Agama?: boolean
+  Jurusan?: boolean
+  Angkatan?: boolean
+  Akun_ig?: boolean
+  Hobi?: boolean
+  Alamat_asal?: boolean
+  Alamat_malang?: boolean
+  Riwayat_pendidikan?: boolean
+  Pengalaman_organisasi?: boolean
+  Riwayat_penyakit?: boolean
+  Minat_bakat?: boolean
+  Motivasi?: boolean
+  Sumber_informasi?: boolean
+  Siap_kader?: boolean
+  Foto_baju_url?: boolean
   Submitted_at?: boolean
   Status?: boolean
   Organization_Organization_id?: boolean
@@ -875,7 +1617,7 @@ export type MemberAppSelectScalar = {
   Admin_user_Email?: boolean
 }
 
-export type MemberAppOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"App_id" | "Full_Name" | "Email" | "Phone_Number" | "Submitted_at" | "Status" | "Organization_Organization_id" | "Admin_user_Admin_id" | "Admin_user_Email", ExtArgs["result"]["memberApp"]>
+export type MemberAppOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"App_id" | "Full_Name" | "Email" | "Phone_Number" | "Tempat_lahir" | "Tanggal_lahir" | "Jenis_kelamin" | "Agama" | "Jurusan" | "Angkatan" | "Akun_ig" | "Hobi" | "Alamat_asal" | "Alamat_malang" | "Riwayat_pendidikan" | "Pengalaman_organisasi" | "Riwayat_penyakit" | "Minat_bakat" | "Motivasi" | "Sumber_informasi" | "Siap_kader" | "Foto_baju_url" | "Submitted_at" | "Status" | "Organization_Organization_id" | "Admin_user_Admin_id" | "Admin_user_Email", ExtArgs["result"]["memberApp"]>
 export type MemberAppInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   AdminUser?: boolean | Prisma.AdminUserDefaultArgs<ExtArgs>
@@ -894,6 +1636,24 @@ export type $MemberAppPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     Full_Name: string
     Email: string
     Phone_Number: string
+    Tempat_lahir: string | null
+    Tanggal_lahir: Date | null
+    Jenis_kelamin: string | null
+    Agama: string | null
+    Jurusan: string | null
+    Angkatan: string | null
+    Akun_ig: string | null
+    Hobi: string | null
+    Alamat_asal: string | null
+    Alamat_malang: string | null
+    Riwayat_pendidikan: string | null
+    Pengalaman_organisasi: string | null
+    Riwayat_penyakit: string | null
+    Minat_bakat: string | null
+    Motivasi: string | null
+    Sumber_informasi: string | null
+    Siap_kader: boolean | null
+    Foto_baju_url: string | null
     Submitted_at: Date
     Status: string
     Organization_Organization_id: bigint
@@ -1275,6 +2035,24 @@ export interface MemberAppFieldRefs {
   readonly Full_Name: Prisma.FieldRef<"MemberApp", 'String'>
   readonly Email: Prisma.FieldRef<"MemberApp", 'String'>
   readonly Phone_Number: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Tempat_lahir: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Tanggal_lahir: Prisma.FieldRef<"MemberApp", 'DateTime'>
+  readonly Jenis_kelamin: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Agama: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Jurusan: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Angkatan: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Akun_ig: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Hobi: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Alamat_asal: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Alamat_malang: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Riwayat_pendidikan: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Pengalaman_organisasi: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Riwayat_penyakit: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Minat_bakat: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Motivasi: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Sumber_informasi: Prisma.FieldRef<"MemberApp", 'String'>
+  readonly Siap_kader: Prisma.FieldRef<"MemberApp", 'Boolean'>
+  readonly Foto_baju_url: Prisma.FieldRef<"MemberApp", 'String'>
   readonly Submitted_at: Prisma.FieldRef<"MemberApp", 'DateTime'>
   readonly Status: Prisma.FieldRef<"MemberApp", 'String'>
   readonly Organization_Organization_id: Prisma.FieldRef<"MemberApp", 'BigInt'>

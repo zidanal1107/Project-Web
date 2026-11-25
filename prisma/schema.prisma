@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider            = "prisma-client"
   output              = "../src/generated/prisma"
@@ -55,12 +50,12 @@ model Announcement {
 }
 
 model AuditLog {
-  Audit_id    BigInt @id @map("Audit_id")
-  Action      String @db.VarChar(100)
-  Entity_type String @db.VarChar(50)
+  Audit_id    BigInt   @id @map("Audit_id")
+  Action      String   @db.VarChar(100)
+  Entity_type String   @db.VarChar(50)
   Entity_id   BigInt
   Created_at  DateTime @db.Date
-  Details     String? @db.LongText
+  Details     String?  @db.LongText
 
   Admin_user_Admin_id BigInt
   Admin_user_Email    String @db.VarChar(150)
@@ -120,10 +115,10 @@ model Event {
 model Member {
   Member_Id BigInt @id @map("Member_Id")
 
-  Member_No String @db.VarChar(30)
+  Member_No String   @db.VarChar(30)
   Photo_url String?  @db.VarChar(255)
   Joined_at DateTime @db.Date
-  Status    String @db.VarChar(20)
+  Status    String   @db.VarChar(20)
 
   Member_app_App_id BigInt
   Member_app_Email  String @db.VarChar(150)
@@ -140,8 +135,34 @@ model MemberApp {
   Full_Name    String @db.VarChar(150)
   Email        String @db.VarChar(150)
   Phone_Number String @db.VarChar(30)
+
+  Tempat_lahir  String?   @db.VarChar(100)
+  Tanggal_lahir DateTime? @db.Date
+  Jenis_kelamin String?   @db.VarChar(20)
+  Agama         String?   @db.VarChar(30)
+
+  Jurusan  String? @db.VarChar(150)
+  Angkatan String? @db.VarChar(10)
+
+  Akun_ig String? @db.VarChar(100)
+  Hobi    String? @db.VarChar(150)
+
+  Alamat_asal   String? @db.Text
+  Alamat_malang String? @db.Text
+
+  Riwayat_pendidikan    String? @db.Text
+  Pengalaman_organisasi String? @db.Text
+
+  Riwayat_penyakit String? @db.Text
+  Minat_bakat      String? @db.VarChar(200)
+  Motivasi         String? @db.Text
+
+  Sumber_informasi String?  @db.VarChar(200)
+  Siap_kader       Boolean? @default(true)
+  Foto_baju_url    String?  @db.Text
+
   Submitted_at DateTime @db.Date
-  Status       String @db.VarChar(20)
+  Status       String   @db.VarChar(20)
 
   Organization_Organization_id BigInt
 
@@ -160,17 +181,17 @@ model MemberApp {
 model Organization {
   Organization_id BigInt @id @map("Organization_id")
 
-  Name        String @db.VarChar(150)
-  Description String @db.LongText
+  Name        String  @db.VarChar(150)
+  Description String  @db.LongText
   Vision      String? @db.LongText
   Mission     String? @db.LongText
-  Email       String @db.VarChar(150)
-  Logo_url    String @db.VarChar(255)
+  Email       String  @db.VarChar(150)
+  Logo_url    String  @db.VarChar(255)
 
   Announcements Announcement[]
-  Dapartemens  Dapartemen[]
-  Events       Event[]
-  Member_apps  MemberApp[]
+  Dapartemens   Dapartemen[]
+  Events        Event[]
+  Member_apps   MemberApp[]
 
   @@map("Organization")
 }

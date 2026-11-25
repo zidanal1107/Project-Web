@@ -1,0 +1,16 @@
+-- AlterTable
+ALTER TABLE `Member` ADD COLUMN `Alamat_domisili` TEXT NULL,
+    ADD COLUMN `Asal_komisariat` VARCHAR(150) NULL,
+    ADD COLUMN `Asal_pc` VARCHAR(150) NULL,
+    ADD COLUMN `Asal_perguruan_tinggi` VARCHAR(150) NULL,
+    ADD COLUMN `Email` VARCHAR(150) NULL,
+    ADD COLUMN `Jenis_kelamin` VARCHAR(20) NULL,
+    ADD COLUMN `Jenjang_perkaderan` VARCHAR(100) NULL,
+    ADD COLUMN `Link_berkas` TEXT NULL,
+    ADD COLUMN `Motivasi` TEXT NULL,
+    ADD COLUMN `Nama_lengkap` VARCHAR(150) NULL,
+    ADD COLUMN `No_whatsapp` VARCHAR(20) NULL,
+    ADD COLUMN `Program_studi` VARCHAR(150) NULL,
+    ADD COLUMN `Riwayat_penyakit` TEXT NULL,
+    ADD COLUMN `Tanggal_lahir` DATE NULL,
+    ADD COLUMN `Tempat_lahir` VARCHAR(100) NULL;

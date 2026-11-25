@@ -1,17 +1,38 @@
 import "server-only";
+import { prisma } from "@/lib/prisma";
 
-export function getSystemActor() {
-  const adminId = process.env.SYSTEM_ADMIN_ID;
-  const email = process.env.SYSTEM_ADMIN_EMAIL;
-  const organizationId = process.env.DEFAULT_ORGANIZATION_ID;
+export async function getSystemActor() {
+  const [admin, organization] = await Promise.all([
+    prisma.adminUser.findFirst({
+      orderBy: {
+        Admin_id: "asc",
+      },
+      select: {
+        Admin_id: true,
+        Email: true,
+      },
+    }),
+    prisma.organization.findFirst({
+      orderBy: {
+        Organization_id: "asc",
+      },
+      select: {
+        Organization_id: true,
+      },
+    }),
+  ]);
 
-  if (!adminId || !email || !organizationId) {
-    throw new Error("SYSTEM_ADMIN_ID, SYSTEM_ADMIN_EMAIL, DEFAULT_ORGANIZATION_ID belum diset");
+  if (!admin) {
+    throw new Error("Data admin tidak ditemukan di tabel AdminUser");
+  }
+
+  if (!organization) {
+    throw new Error("Data organisasi tidak ditemukan di tabel Organization");
   }
 
   return {
-    adminId: BigInt(adminId),
-    email,
-    organizationId: BigInt(organizationId),
+    adminId: BigInt(admin.Admin_id),
+    email: admin.Email,
+    organizationId: BigInt(organization.Organization_id),
   };
 }

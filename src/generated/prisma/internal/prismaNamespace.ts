@@ -1157,6 +1157,24 @@ export const MemberAppScalarFieldEnum = {
   Full_Name: 'Full_Name',
   Email: 'Email',
   Phone_Number: 'Phone_Number',
+  Tempat_lahir: 'Tempat_lahir',
+  Tanggal_lahir: 'Tanggal_lahir',
+  Jenis_kelamin: 'Jenis_kelamin',
+  Agama: 'Agama',
+  Jurusan: 'Jurusan',
+  Angkatan: 'Angkatan',
+  Akun_ig: 'Akun_ig',
+  Hobi: 'Hobi',
+  Alamat_asal: 'Alamat_asal',
+  Alamat_malang: 'Alamat_malang',
+  Riwayat_pendidikan: 'Riwayat_pendidikan',
+  Pengalaman_organisasi: 'Pengalaman_organisasi',
+  Riwayat_penyakit: 'Riwayat_penyakit',
+  Minat_bakat: 'Minat_bakat',
+  Motivasi: 'Motivasi',
+  Sumber_informasi: 'Sumber_informasi',
+  Siap_kader: 'Siap_kader',
+  Foto_baju_url: 'Foto_baju_url',
   Submitted_at: 'Submitted_at',
   Status: 'Status',
   Organization_Organization_id: 'Organization_Organization_id',
@@ -1272,6 +1290,22 @@ export const MemberAppOrderByRelevanceFieldEnum = {
   Full_Name: 'Full_Name',
   Email: 'Email',
   Phone_Number: 'Phone_Number',
+  Tempat_lahir: 'Tempat_lahir',
+  Jenis_kelamin: 'Jenis_kelamin',
+  Agama: 'Agama',
+  Jurusan: 'Jurusan',
+  Angkatan: 'Angkatan',
+  Akun_ig: 'Akun_ig',
+  Hobi: 'Hobi',
+  Alamat_asal: 'Alamat_asal',
+  Alamat_malang: 'Alamat_malang',
+  Riwayat_pendidikan: 'Riwayat_pendidikan',
+  Pengalaman_organisasi: 'Pengalaman_organisasi',
+  Riwayat_penyakit: 'Riwayat_penyakit',
+  Minat_bakat: 'Minat_bakat',
+  Motivasi: 'Motivasi',
+  Sumber_informasi: 'Sumber_informasi',
+  Foto_baju_url: 'Foto_baju_url',
   Status: 'Status',
   Admin_user_Email: 'Admin_user_Email'
 } as const
@@ -1315,6 +1349,13 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 

@@ -1,16 +1,44 @@
-export const APPLICATION_STATUSES = ["PENDING", "APPROVED", "REJECTED"] as const;
-export type ApplicationStatus = (typeof APPLICATION_STATUSES)[number];
+export interface SystemActor {
+  adminId: bigint;
+  email: string;
+  organizationId: bigint;
+}
 
-export type CreateMemberApplicationData = {
-    fullName: string;
-    email: string;
-    phoneNumber: string;
-};
+export interface CreateMemberApplicationData {
+  fullName: string;
+  email: string;
+  phoneNumber: string;
 
-export type GetAllFilter = {
-    status?: string;
-    search?: string;
-    organizationId: bigint;
-    page: number;
-    limit: number;
-};
+  tempatLahir: string;
+  tanggalLahir: Date;
+  jenisKelamin: string;
+  agama: string;
+
+  jurusan: string;
+  angkatan: string;
+
+  akunIg?: string | null;
+  hobi: string;
+
+  alamatAsal: string;
+  alamatMalang: string;
+
+  riwayatPendidikan: string;
+  pengalamanOrganisasi?: string | null;
+
+  riwayatPenyakit?: string | null;
+  minatBakat: string;
+  motivasi: string;
+
+  sumberInformasi: string;
+  siapKader: boolean;
+  fotoBajuUrl?: string | null;
+}
+
+export interface GetMemberApplicationsParams {
+  page: number;
+  limit: number;
+  status?: string;
+  search?: string;
+  organizationId: bigint;
+}
