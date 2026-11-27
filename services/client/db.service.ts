@@ -456,10 +456,29 @@ export const db = {
     phone: string;
     details?: Record<string, unknown>;
   }): Promise<MemberApplication> {
+    const d = payload.details ?? {};
     const result = await sendData<RawApplication>('post', '/member-applications', {
       full_name: payload.full_name,
       email: payload.email,
       phone_number: payload.phone,
+      tempat_lahir: d.birth_place,
+      tanggal_lahir: d.birth_date,
+      jenis_kelamin: d.gender,
+      agama: d.religion,
+      jurusan: d.major,
+      angkatan: d.batch,
+      akun_ig: d.instagram || null,
+      hobi: d.hobby,
+      alamat_asal: d.origin_address,
+      alamat_malang: d.malang_address,
+      riwayat_pendidikan: d.education_history,
+      pengalaman_organisasi: d.organization_experience || null,
+      riwayat_penyakit: d.medical_history || null,
+      minat_bakat: d.interests_talents,
+      motivasi: d.join_reason,
+      sumber_informasi: d.info_source,
+      siap_kader: d.ready_to_be_cadre,
+      foto_baju_url: d.collared_photo_name || null,
     });
     return mapApplication(result, payload.phone);
   },
