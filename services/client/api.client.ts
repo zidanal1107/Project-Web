@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 
 // Frontend dan backend satu proyek Next, jadi cukup alamat relatif (tanpa CORS)
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "/api/v1";
 
 export type PageMeta = {
   page: number;
